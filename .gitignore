@@ -33,3 +33,6 @@ msbuild.wrn
 
 # Graphical resources
 GIMP/
+
+# Graphical resources used in project (only in develop phase)
+Resources/
