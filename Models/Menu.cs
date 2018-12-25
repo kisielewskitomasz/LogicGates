@@ -1,6 +1,7 @@
 using System;
 using SDL2;
 using LogicGates.Engine;
+using LogicGates.Common;
 
 namespace LogicGates.Models
 {
@@ -20,7 +21,7 @@ namespace LogicGates.Models
 
         public override void Render(IntPtr renderer)
         {
-            Drawer.RenderTexture(Texture, renderer, Position.Width, Position.Heigth, Size.Width, Size.Heigth);
+            Drawer.RenderTexture(Texture, renderer, Position.Width, Position.Height, Size.Width, Size.Height);
         }
     }
 }
