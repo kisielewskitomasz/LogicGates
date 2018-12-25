@@ -1,13 +1,10 @@
 using System;
 using SDL2;
+using LogicGates.Common;
 
 namespace LogicGates.Engine
 {
-    public struct Canvas
-    {
-        public const int Width = 1024;
-        public const int Height = 768;
-    }
+
 
     public class Output
     {

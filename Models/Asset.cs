@@ -1,17 +1,10 @@
 using System;
 using LogicGates.Engine;
+using LogicGates.Common;
 
 namespace LogicGates.Models
 {
-    public struct Size {
-        public int Width;
-        public int Heigth;
-    }
 
-    public struct Position {
-        public int Width;
-        public int Heigth;
-    }
     public abstract class Asset
     {
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
