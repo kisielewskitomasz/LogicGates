@@ -1,4 +1,5 @@
 using System;
+using SDL2;
 
 namespace LogicGates.Engine
 {
@@ -18,6 +19,8 @@ namespace LogicGates.Engine
             {
                 item.Render(Output.Renderer);
             }
+
+            SDL.SDL_RenderPresent(Output.Renderer);
 
             EngineInput = new Engine.Input();
         }
