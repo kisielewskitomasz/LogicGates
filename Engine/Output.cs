@@ -41,6 +41,10 @@ namespace LogicGates.Engine
             if(Renderer == IntPtr.Zero)
                 Logger.Fatal(nameof(SDL.SDL_CreateRenderer),
                     () => ReleaseAndQuit(Window, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+
+            SDL.SDL_RenderClear(Renderer);
+
+
         }
 
         ~Output()
