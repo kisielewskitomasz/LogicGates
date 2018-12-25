@@ -1,6 +1,7 @@
 ﻿using System;
 using SDL2;
-using LogicGates.Models;
+using LogicGates.Engine;
+
 namespace LogicGates
 {
     class Program
