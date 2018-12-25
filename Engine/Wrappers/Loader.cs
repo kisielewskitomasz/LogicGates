@@ -6,7 +6,7 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
-    public static class SDLLoader
+    public static class Loader
     {
         private static string _basePath = null;
 
@@ -16,16 +16,18 @@ namespace LogicGates.Engine
             {
                 if(string.IsNullOrWhiteSpace(_basePath))
                 {
-                    _basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    _basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources");
                 }
 
                 return _basePath;
             }
         }
 
-        public static string GetFilePath(string fileName)
+        static string GetFilePath(string fileName)
         {
-            var path = Path.Combine(BasePath, "Resources", fileName);
+            var path = Path.Combine(BasePath, fileName);
+
+            Console.WriteLine($"BasePath: {BasePath}; Filename: {fileName}");
 
             if(!File.Exists(path))
             {
@@ -35,11 +37,11 @@ namespace LogicGates.Engine
             return path;
         }
 
-        public static IntPtr LoadTextureFromBitmap(string path, IntPtr renderer)
+        public static IntPtr LoadTextureFromBitmap(string fileName, IntPtr renderer)
         {
             var texture = IntPtr.Zero;
 
-            var image = SDL.SDL_LoadBMP(path);
+            var image = SDL.SDL_LoadBMP(Loader.GetFilePath(fileName));
 
             if(image != IntPtr.Zero)
             {
@@ -48,24 +50,24 @@ namespace LogicGates.Engine
 
                 if(texture == IntPtr.Zero)
                 {
-                    SDLLogger.Error(nameof(SDL.SDL_CreateTextureFromSurface));
+                    Logger.Error(nameof(SDL.SDL_CreateTextureFromSurface));
                 }
             }
             else
             {
-                SDLLogger.Error(nameof(SDL.SDL_LoadBMP));
+                Logger.Error(nameof(SDL.SDL_LoadBMP));
             }
 
             return texture;
         }
 
-        public static IntPtr LoadTextureFromImage(string path, IntPtr renderer)
+        public static IntPtr LoadTextureFromImage(string fileName, IntPtr renderer)
         {
-            var texture = SDL_image.IMG_LoadTexture(renderer, path);
+            var texture = SDL_image.IMG_LoadTexture(renderer, Loader.GetFilePath(fileName));
 
             if(texture == IntPtr.Zero)
             {
-                SDLLogger.Error(nameof(SDL_image.IMG_LoadTexture));
+                Logger.Error(nameof(SDL_image.IMG_LoadTexture));
             }
 
             return texture;
