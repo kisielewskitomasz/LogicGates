@@ -8,9 +8,8 @@ namespace LogicGates.Engine
 {
     public static class Loader
     {
-        private static string _basePath = null;
-
-        public static string BasePath
+        static string _basePath = null;
+        static string BasePath
         {
             get
             {
@@ -27,8 +26,6 @@ namespace LogicGates.Engine
         {
             var path = Path.Combine(BasePath, fileName);
 
-            Console.WriteLine($"BasePath: {BasePath}; Filename: {fileName}");
-
             if(!File.Exists(path))
             {
                 throw new FileNotFoundException(fileName);
@@ -41,7 +38,7 @@ namespace LogicGates.Engine
         {
             var texture = IntPtr.Zero;
 
-            var image = SDL.SDL_LoadBMP(Loader.GetFilePath(fileName));
+            var image = SDL.SDL_LoadBMP(GetFilePath(fileName));
 
             if(image != IntPtr.Zero)
             {
@@ -63,7 +60,7 @@ namespace LogicGates.Engine
 
         public static IntPtr LoadTextureFromImage(string fileName, IntPtr renderer)
         {
-            var texture = SDL_image.IMG_LoadTexture(renderer, Loader.GetFilePath(fileName));
+            var texture = SDL_image.IMG_LoadTexture(renderer, GetFilePath(fileName));
 
             if(texture == IntPtr.Zero)
             {
