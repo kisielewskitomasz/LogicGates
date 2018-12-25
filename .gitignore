@@ -32,7 +32,7 @@ msbuild.wrn
 .vs/
 
 # Graphical resources
-GIMP/
+_GIMP/
 
 # Graphical resources used in project (only in develop phase)
 Resources/
