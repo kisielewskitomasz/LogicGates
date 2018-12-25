@@ -1,6 +1,5 @@
 ﻿using System;
 using SDL2;
-using LogicGates.Engine;
 
 namespace LogicGates
 {
@@ -8,8 +7,10 @@ namespace LogicGates
     {
         static void Main(string[] args)
         {
-            var output = new Output();
-            var input = new Input();
+            var output = new Engine.Output();
+            var input = new Engine.Input();
+
+            var level = new Models.Level01();
         }
     }
 }
