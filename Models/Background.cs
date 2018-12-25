@@ -20,7 +20,6 @@ namespace LogicGates.Models
 
         public override void Render(IntPtr renderer)
         {
-            SDL.SDL_RenderClear(renderer);
 
             var xTiles = Canvas.Width / Size.Width;
             var yTiles = Canvas.Height / Size.Heigth;
@@ -33,8 +32,6 @@ namespace LogicGates.Models
 
                 Drawer.RenderTexture(Texture, renderer, x, y, Size.Width, Size.Heigth);
             }
-
-            SDL.SDL_RenderPresent(renderer);
         }
     }
 }
