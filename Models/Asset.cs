@@ -41,6 +41,6 @@ namespace LogicGates.Models
             Position = position;
         }
 
-        public abstract void Render(IntPtr rendered);
+        public abstract void Render(IntPtr renderer);
     }
 }
