@@ -3,7 +3,7 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
-    public static class SDLLogger
+    public static class Logger
     {
         /// <summary>
         /// Logs fatal errors into console. If cleanup delegate exits execute it, if not throws new exception.

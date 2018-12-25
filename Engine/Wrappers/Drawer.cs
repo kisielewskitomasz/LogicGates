@@ -3,7 +3,7 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
-    public static class SdlDrawer
+    public static class Drawer
     {
         public static void RenderTexture(IntPtr texture, IntPtr renderer, int x, int y)
         {
