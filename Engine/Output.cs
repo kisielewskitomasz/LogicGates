@@ -3,9 +3,17 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
+    public struct Canvas
+    {
+        public const int Width = 1024;
+        public const int Height = 768;
+    }
+
     public class Output
     {
-        public IntPtr Window { get; private set; } = IntPtr.Zero;
+        public static IntPtr Window { get; private set; } = IntPtr.Zero;
+        public static IntPtr Renderer { get; private set; } = IntPtr.Zero;
+
         public Output()
         {
             #if DEBUG
@@ -13,30 +21,33 @@ namespace LogicGates.Engine
             #endif
 
             if (SDL.SDL_Init(SDL.SDL_INIT_VIDEO | SDL.SDL_INIT_AUDIO) < 0)
-                SDLLogger.Fatal(nameof(SDL.SDL_Init));
+                Logger.Fatal(nameof(SDL.SDL_Init));
+
+            if (SDL_image.IMG_Init(SDL_image.IMG_InitFlags.IMG_INIT_PNG) != (int)SDL_image.IMG_InitFlags.IMG_INIT_PNG) {
+                SDL.SDL_SetError("IMG_Init failed.");
+                Logger.Fatal(nameof(SDL_image.IMG_Init));
+            }
 
             Window = SDL.SDL_CreateWindow("LogicGates", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED,
-                                            1024, 768, SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE);
+                                            Canvas.Width, Canvas.Height, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
             if (Window == IntPtr.Zero)
-                SDLLogger.Fatal(nameof(SDL.SDL_CreateWindow),
+                Logger.Fatal(nameof(SDL.SDL_CreateWindow),
                 () => ReleaseAndQuit(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
 
-            var renderer = SDL.SDL_CreateRenderer(Window, -1,
+            Renderer = SDL.SDL_CreateRenderer(Window, -1,
                 SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL.SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
 
-            if(renderer == IntPtr.Zero)
-                SDLLogger.Fatal(nameof(SDL.SDL_CreateRenderer),
+            if(Renderer == IntPtr.Zero)
+                Logger.Fatal(nameof(SDL.SDL_CreateRenderer),
                     () => ReleaseAndQuit(Window, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
         }
 
         ~Output()
         {
-            SDL.SDL_DestroyWindow(Window);
-            SDL.SDL_Quit();
+            ReleaseAndQuit(Window, Renderer, IntPtr.Zero, IntPtr.Zero);
         }
-
-        private bool ReleaseAndQuit(IntPtr window, IntPtr renderer, IntPtr font, IntPtr image)
+        public static bool ReleaseAndQuit(IntPtr window, IntPtr renderer, IntPtr font, IntPtr image)
         {
             if(window != IntPtr.Zero)
                 SDL.SDL_DestroyWindow(window);
