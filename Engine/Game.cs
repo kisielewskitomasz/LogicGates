@@ -1,6 +1,6 @@
 using System;
 
-namespace LogicGates.Models
+namespace LogicGates.Engine
 {
     public class Game
     {

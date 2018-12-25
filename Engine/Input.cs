@@ -1,7 +1,7 @@
 using System;
 using SDL2;
 
-namespace LogicGates.Models
+namespace LogicGates.Engine
 {
     public class Input
     {
