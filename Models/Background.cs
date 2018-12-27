@@ -9,6 +9,7 @@ namespace LogicGates.Models
     {
         public Background(string fileName) : base(fileName)
         {
+            // how to get laid?
         }
 
         public Background(string fileName, Size size) : base(fileName, size)
@@ -19,20 +20,30 @@ namespace LogicGates.Models
         {
         }
 
+        public override void Clicked(Position mousePosition, Input engineInput)
+        {
+        }
+
         public override void Render(IntPtr renderer)
         {
-
-            var xTiles = Canvas.Width / Size.Width;
-            var yTiles = Canvas.Height / Size.Height;
-            int x, y;
-
-            for(var i = 0; i < (xTiles * yTiles); i++)
-            {
-                x = (i % xTiles) * Size.Width;
-                y = (i / xTiles) * Size.Height;
-
-                Drawer.RenderTexture(Texture, renderer, x, y, Size.Width, Size.Height);
-            }
+            Drawer.RenderTexture(Texture, renderer, 0, 0, Size.Width, Size.Height);
         }
+
+        // for single tile
+        // public override void Render(IntPtr renderer)
+        // {
+
+        //     var xTiles = Canvas.Width / Size.Width;
+        //     var yTiles = Canvas.Height / Size.Height;
+        //     int x, y;
+
+        //     for(var i = 0; i < (xTiles * yTiles); i++)
+        //     {
+        //         x = (i % xTiles) * Size.Width;
+        //         y = (i / xTiles) * Size.Height;
+
+        //         Drawer.RenderTexture(Texture, renderer, x, y, Size.Width, Size.Height);
+        //     }
+        // }
     }
 }
