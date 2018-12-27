@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using SDL2;
+using LogicGates.Common;
+using LogicGates.Engine;
 
 namespace LogicGates.Models
 {
@@ -10,6 +13,7 @@ namespace LogicGates.Models
         public Level()
         {
             AsstesList = new List<Asset>();
+            SDL.SDL_RenderClear(Output.Renderer);
         }
     }
 }
