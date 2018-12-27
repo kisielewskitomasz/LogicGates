@@ -19,9 +19,36 @@ namespace LogicGates.Models
         {
         }
 
-        public override void Render(IntPtr renderer)
+        public override void Clicked(Position mousePosition, Input engineInput)
         {
-            Drawer.RenderTexture(Texture, renderer, Position.Width, Position.Height, Size.Width, Size.Height);
+            if ((mousePosition.Width >= (Position.Width + 32)) && (mousePosition.Width <= (Position.Width + Size.Width - 32)))
+            {
+                if((mousePosition.Height >= Position.Height + 32) && (mousePosition.Height <= (Position.Height + 32 + (64 * 1))))
+                    Contiune();
+                else if((mousePosition.Height >= Position.Height + 32 + (64 * 2)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 3))))
+                    Reset();
+                else if((mousePosition.Height >= Position.Height + 32 + (64 * 4)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 5))))
+                    Quit(engineInput);
+                // else
+                    // System.Console.WriteLine("Nie trafiles w przycisk!");
+            }
+            // else
+                // System.Console.WriteLine("Nie trafiles w przycisk!");
         }
+
+        public override void Render(IntPtr renderer) =>
+            Drawer.RenderTexture(Texture, renderer, Position.Width, Position.Height, Size.Width, Size.Height);
+        void Contiune()
+        {
+
+        }
+
+        void Reset()
+        {
+
+        }
+
+        void Quit(Input engineInput) =>
+            engineInput.Quit();
     }
 }
