@@ -17,8 +17,7 @@ namespace LogicGates.Models
 
             if(Texture == IntPtr.Zero)
             {
-                Logger.Fatal(
-                    nameof(Loader.LoadTextureFromImage),
+                Logger.Fatal(nameof(Loader.LoadTextureFromImage),
                     () => Output.ReleaseAndQuit(Output.Window, Output.Renderer, IntPtr.Zero, Texture));
             }
         }
@@ -34,8 +33,8 @@ namespace LogicGates.Models
             Position = position;
         }
 
-        public abstract void Render(IntPtr renderer);
+        public abstract void Render();
 
-        public abstract void Clicked(Position mousePosition, Input engineInput);
+        public abstract void Clicked(Position mousePosition);
     }
 }
