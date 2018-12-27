@@ -9,7 +9,6 @@ namespace LogicGates.Models
     {
         public Background(string fileName) : base(fileName)
         {
-            // how to get laid?
         }
 
         public Background(string fileName, Size size) : base(fileName, size)
