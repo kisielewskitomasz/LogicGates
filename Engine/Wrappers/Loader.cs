@@ -1,44 +1,16 @@
 using System;
-using System.IO;
-using System.Reflection;
-
 using SDL2;
+using LogicGates.Common;
 
 namespace LogicGates.Engine
 {
     public static class Loader
     {
-        static string _basePath = null;
-        static string BasePath
-        {
-            get
-            {
-                if(string.IsNullOrWhiteSpace(_basePath))
-                {
-                    _basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources");
-                }
-
-                return _basePath;
-            }
-        }
-
-        static string GetFilePath(string fileName)
-        {
-            var path = Path.Combine(BasePath, fileName);
-
-            if(!File.Exists(path))
-            {
-                throw new FileNotFoundException(fileName);
-            }
-
-            return path;
-        }
-
         public static IntPtr LoadTextureFromBitmap(string fileName, IntPtr renderer)
         {
             var texture = IntPtr.Zero;
 
-            var image = SDL.SDL_LoadBMP(GetFilePath(fileName));
+            var image = SDL.SDL_LoadBMP(FilePath.Get(fileName));
 
             if(image != IntPtr.Zero)
             {
@@ -60,7 +32,7 @@ namespace LogicGates.Engine
 
         public static IntPtr LoadTextureFromImage(string fileName, IntPtr renderer)
         {
-            var texture = SDL_image.IMG_LoadTexture(renderer, GetFilePath(fileName));
+            var texture = SDL_image.IMG_LoadTexture(renderer, FilePath.Get(fileName));
 
             if(texture == IntPtr.Zero)
             {
