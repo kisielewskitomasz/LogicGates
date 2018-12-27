@@ -45,6 +45,7 @@ namespace LogicGates.Engine
         {
             ReleaseAndQuit(Window, Renderer, IntPtr.Zero, IntPtr.Zero);
         }
+
         public static bool ReleaseAndQuit(IntPtr window, IntPtr renderer, IntPtr font, IntPtr image)
         {
             if(window != IntPtr.Zero)
