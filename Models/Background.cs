@@ -19,13 +19,13 @@ namespace LogicGates.Models
         {
         }
 
-        public override void Clicked(Position mousePosition, Input engineInput)
+        public override void Clicked(Position mousePosition)
         {
         }
 
-        public override void Render(IntPtr renderer)
+        public override void Render()
         {
-            Drawer.RenderTexture(Texture, renderer, 0, 0, Size.Width, Size.Height);
+            Drawer.RenderTexture(Texture, Output.Renderer, 0, 0, Size.Width, Size.Height);
         }
 
         // for single tile
