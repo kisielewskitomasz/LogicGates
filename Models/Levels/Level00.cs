@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using SDL2;
 using LogicGates.Common;
+using LogicGates.Engine;
 
 namespace LogicGates.Models
 {
@@ -8,9 +10,6 @@ namespace LogicGates.Models
     {
         public Level00()
         {
-            // AsstesList.Add(new Background("background.png", new Size {Width = 64, Height = 64}));
-            AsstesList.Add(new Background("background.png", new Size {Width = 1024, Height = 768}));
-
             var menuSize = new Size {
                 Width = 384,
                 Height = 384

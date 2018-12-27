@@ -13,6 +13,7 @@ namespace LogicGates.Models
         public Level()
         {
             AsstesList = new List<Asset>();
+            AsstesList.Add(new Background("background.png", new Size {Width = 1024, Height = 768}));
             SDL.SDL_RenderClear(Output.Renderer);
         }
     }

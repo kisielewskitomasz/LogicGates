@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using SDL2;
+using LogicGates.Common;
+using LogicGates.Engine;
 
 namespace LogicGates.Models
 {
