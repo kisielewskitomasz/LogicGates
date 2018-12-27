@@ -35,5 +35,7 @@ namespace LogicGates.Models
         }
 
         public abstract void Render(IntPtr renderer);
+
+        public abstract void Clicked(Position mousePosition, Input engineInput);
     }
 }
