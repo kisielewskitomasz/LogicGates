@@ -19,36 +19,29 @@ namespace LogicGates.Models
         {
         }
 
-        public override void Clicked(Position mousePosition, Input engineInput)
+        public override void Clicked(Position mousePosition)
         {
             if ((mousePosition.Width >= (Position.Width + 32)) && (mousePosition.Width <= (Position.Width + Size.Width - 32)))
             {
                 if((mousePosition.Height >= Position.Height + 32) && (mousePosition.Height <= (Position.Height + 32 + (64 * 1))))
-                    Contiune();
+                    ContiuneButton();
                 else if((mousePosition.Height >= Position.Height + 32 + (64 * 2)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 3))))
-                    Reset();
+                    ResetButton();
                 else if((mousePosition.Height >= Position.Height + 32 + (64 * 4)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 5))))
-                    Quit(engineInput);
-                // else
-                    // System.Console.WriteLine("Nie trafiles w przycisk!");
+                    QuitButton();
             }
-            // else
-                // System.Console.WriteLine("Nie trafiles w przycisk!");
         }
 
-        public override void Render(IntPtr renderer) =>
-            Drawer.RenderTexture(Texture, renderer, Position.Width, Position.Height, Size.Width, Size.Height);
-        void Contiune()
-        {
+        public override void Render() =>
+            Drawer.RenderTexture(Texture, Output.Renderer, Position.Width, Position.Height, Size.Width, Size.Height);
 
-        }
+        void ContiuneButton() =>
+            Harness.LoadGame();
 
-        void Reset()
-        {
+        void ResetButton() =>
+            Harness.ResetGame();
 
-        }
-
-        void Quit(Input engineInput) =>
-            engineInput.Quit();
+        void QuitButton() =>
+            Harness.QuitGame();
     }
 }
