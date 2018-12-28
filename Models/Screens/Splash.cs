@@ -4,7 +4,7 @@ using SDL2;
 using LogicGates.Engine;
 using LogicGates.Common;
 
-namespace LogicGates.Models
+namespace LogicGates.Models.Screens
 {
     public class Splash : Asset
     {

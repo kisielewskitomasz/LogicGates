@@ -1,6 +1,6 @@
 using LogicGates.Common;
 
-namespace LogicGates.Models
+namespace LogicGates.Models.Screens
 {
     public class Tray : Asset
     {

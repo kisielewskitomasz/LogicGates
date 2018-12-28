@@ -3,21 +3,21 @@ using SDL2;
 using LogicGates.Engine;
 using LogicGates.Common;
 
-namespace LogicGates.Models
+namespace LogicGates.Models.Screens
 {
     public class Menu : Asset
     {
         protected override string FileName { get; set; } = "menu.png";
 
-        public Menu(string fileName) : base()
+        public Menu() : base()
         {
         }
 
-        public Menu(string fileName, Size size) : base(size)
+        public Menu(Size size) : base(size)
         {
         }
 
-        public Menu(string fileName, Size size, Position position) : base(size, position)
+        public Menu(Size size, Position position) : base(size, position)
         {
         }
 
