@@ -14,11 +14,11 @@ namespace LogicGates.Models
                 Width = 384,
                 Height = 384
             };
-            var menuPosition = new Position {
+            var splashPosition = new Position {
                 Width = (Canvas.Width / 2) - (splashSize.Width / 2),
                 Height = (Canvas.Height / 2) - (splashSize.Height / 2)
             };
-            AsstesList.Add(new Splash("splash.png", splashSize, menuPosition));
+            AsstesList.Add(new Splash("splash.png", splashSize, splashPosition));
         }
     }
 }
