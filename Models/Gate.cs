@@ -8,15 +8,15 @@ namespace LogicGates.Models
 {
     public abstract class Gate : Asset
     {
-        public Gate(string fileName) : base(fileName)
+        public Gate() : base()
         {
         }
 
-        public Gate(string fileName, Size size) : base(fileName, size)
+        public Gate(Size size) : base(size)
         {
         }
 
-        public Gate(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Gate(Size size, Position position) : base(size, position)
         {
         }
     }

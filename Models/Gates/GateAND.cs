@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class GateAND : Gate
     {
-        public GateAND(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_and.png";
+
+        public GateAND() : base()
         {
         }
 
-        public GateAND(string fileName, Size size) : base(fileName, size)
+        public GateAND(Size size) : base(size)
         {
         }
 
-        public GateAND(string fileName, Size size, Position position) : base(fileName, size, position)
+        public GateAND(Size size, Position position) : base(size, position)
         {
         }
 

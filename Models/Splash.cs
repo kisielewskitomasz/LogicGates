@@ -8,15 +8,17 @@ namespace LogicGates.Models
 {
     public class Splash : Asset
     {
-        public Splash(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "splash.png";
+
+        public Splash(string fileName) : base()
         {
         }
 
-        public Splash(string fileName, Size size) : base(fileName, size)
+        public Splash(Size size) : base(size)
         {
         }
 
-        public Splash(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Splash(Size size, Position position) : base(size, position)
         {
         }
 

@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class GateOR : Gate
     {
-        public GateOR(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_or.png";
+
+        public GateOR() : base()
         {
         }
 
-        public GateOR(string fileName, Size size) : base(fileName, size)
+        public GateOR(Size size) : base(size)
         {
         }
 
-        public GateOR(string fileName, Size size, Position position) : base(fileName, size, position)
+        public GateOR(Size size, Position position) : base(size, position)
         {
         }
 

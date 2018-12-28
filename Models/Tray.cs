@@ -4,15 +4,17 @@ namespace LogicGates.Models
 {
     public class Tray : Asset
     {
-        public Tray(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "tray.png";
+
+        public Tray() : base()
         {
         }
 
-        public Tray(string fileName, Size size) : base(fileName, size)
+        public Tray(Size size) : base(size)
         {
         }
 
-        public Tray(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Tray(Size size, Position position) : base(size, position)
         {
         }
 

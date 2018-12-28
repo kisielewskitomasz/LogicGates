@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class Ground : Asset
     {
-        public Ground(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "ground.png";
+
+        public Ground() : base()
         {
         }
 
-        public Ground(string fileName, Size size) : base(fileName, size)
+        public Ground(Size size) : base(size)
         {
         }
 
-        public Ground(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Ground(Size size, Position position) : base(size, position)
         {
         }
 

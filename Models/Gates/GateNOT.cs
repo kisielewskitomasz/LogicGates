@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class GateNOT : Gate
     {
-        public GateNOT(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_not.png";
+
+        public GateNOT() : base()
         {
         }
 
-        public GateNOT(string fileName, Size size) : base(fileName, size)
+        public GateNOT(Size size) : base(size)
         {
         }
 
-        public GateNOT(string fileName, Size size, Position position) : base(fileName, size, position)
+        public GateNOT(Size size, Position position) : base(size, position)
         {
         }
 

@@ -5,18 +5,19 @@ namespace LogicGates.Models
 {
     public class Source : Asset
     {
-        public Source(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_source.png";
+
+        public Source()
         {
         }
 
-        public Source(string fileName, Size size) : base(fileName, size)
+        public Source(Size size) : base(size)
         {
         }
 
-        public Source(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Source(Size size, Position position) : base(size, position)
         {
         }
-
         public override void Clicked(Position mousePosition)
         {
             throw new NotImplementedException();

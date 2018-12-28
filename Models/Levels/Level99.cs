@@ -18,7 +18,7 @@ namespace LogicGates.Models
                 Width = (Canvas.Width / 2) - (splashSize.Width / 2),
                 Height = (Canvas.Height / 2) - (splashSize.Height / 2)
             };
-            AsstesList.Add(new Splash("splash.png", splashSize, splashPosition));
+            AsstesList.Add(new Splash(splashSize, splashPosition));
         }
     }
 }

@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class Wire : Asset
     {
-        public Wire(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "wire.png";
+
+        public Wire() : base()
         {
         }
 
-        public Wire(string fileName, Size size) : base(fileName, size)
+        public Wire(Size size) : base(size)
         {
         }
 
-        public Wire(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Wire(Size size, Position position) : base(size, position)
         {
         }
 

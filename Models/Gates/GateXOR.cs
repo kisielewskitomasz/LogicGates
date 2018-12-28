@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class GateXOR : Gate
     {
-        public GateXOR(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_xor.png";
+
+        public GateXOR() : base()
         {
         }
 
-        public GateXOR(string fileName, Size size) : base(fileName, size)
+        public GateXOR(Size size) : base(size)
         {
         }
 
-        public GateXOR(string fileName, Size size, Position position) : base(fileName, size, position)
+        public GateXOR(Size size, Position position) : base(size, position)
         {
         }
 

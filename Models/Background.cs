@@ -7,15 +7,17 @@ namespace LogicGates.Models
 {
     public class Background : Asset
     {
-        public Background(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "background.png";
+
+        public Background() : base()
         {
         }
 
-        public Background(string fileName, Size size) : base(fileName, size)
+        public Background(Size size) : base(size)
         {
         }
 
-        public Background(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Background(Size size, Position position) : base(size, position)
         {
         }
 

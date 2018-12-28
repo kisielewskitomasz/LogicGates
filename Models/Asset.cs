@@ -11,9 +11,11 @@ namespace LogicGates.Models
         public Size Size;
         public Position Position;
 
-        public Asset(string fileName)
+        protected abstract string FileName { get; set; }
+
+        public Asset()
         {
-            Texture = Loader.LoadTextureFromImage(fileName, Output.Renderer);
+            Texture = Loader.LoadTextureFromImage(FileName, Output.Renderer);
 
             if(Texture == IntPtr.Zero)
             {
@@ -22,12 +24,12 @@ namespace LogicGates.Models
             }
         }
 
-        public Asset(string fileName, Size size) : this(fileName)
+        public Asset(Size size) : this()
         {
             Size = size;
         }
 
-        public Asset(string fileName, Size size, Position position) : this(fileName)
+        public Asset(Size size, Position position) : this()
         {
             Size = size;
             Position = position;

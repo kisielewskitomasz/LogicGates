@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class Lamp : Asset
     {
-        public Lamp(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "lamp.png";
+
+        public Lamp() : base()
         {
         }
 
-        public Lamp(string fileName, Size size) : base(fileName, size)
+        public Lamp(Size size) : base(size)
         {
         }
 
-        public Lamp(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Lamp(Size size, Position position) : base(size, position)
         {
         }
 

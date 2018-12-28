@@ -5,15 +5,17 @@ namespace LogicGates.Models
 {
     public class GateXNOR : Gate
     {
-        public GateXNOR(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "symbol_xnor.png";
+
+        public GateXNOR() : base()
         {
         }
 
-        public GateXNOR(string fileName, Size size) : base(fileName, size)
+        public GateXNOR(Size size) : base(size)
         {
         }
 
-        public GateXNOR(string fileName, Size size, Position position) : base(fileName, size, position)
+        public GateXNOR(Size size, Position position) : base(size, position)
         {
         }
 

@@ -7,15 +7,17 @@ namespace LogicGates.Models
 {
     public class Menu : Asset
     {
-        public Menu(string fileName) : base(fileName)
+        protected override string FileName { get; set; } = "menu.png";
+
+        public Menu(string fileName) : base()
         {
         }
 
-        public Menu(string fileName, Size size) : base(fileName, size)
+        public Menu(string fileName, Size size) : base(size)
         {
         }
 
-        public Menu(string fileName, Size size, Position position) : base(fileName, size, position)
+        public Menu(string fileName, Size size, Position position) : base(size, position)
         {
         }
 
