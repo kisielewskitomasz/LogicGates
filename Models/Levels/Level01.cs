@@ -10,7 +10,7 @@ namespace LogicGates.Models
     {
         public Level01()
         {
-
+            AsstesList.Add(new Tray("tray.png", new Size {Width = 1024, Height = 64}));
         }
     }
 }
