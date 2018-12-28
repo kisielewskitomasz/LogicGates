@@ -40,13 +40,13 @@ namespace LogicGates.Engine
                         else
                             Harness.GameCurrentLevel = (Level)Activator.CreateInstance(type);
                     }
-
-                    Harness.RefreshOutput();
                 }
             }
             catch (FileNotFoundException) {
+                Harness.GameCurrentLevel = new Level01();
                 SaveGame();
             }
+            Harness.RefreshOutput();
         }
 
         public static void SaveGame() {
@@ -57,7 +57,6 @@ namespace LogicGates.Engine
         }
 
         public static void QuitGame() {
-            Harness.SaveGame();
             Input.Quit();
         }
 
