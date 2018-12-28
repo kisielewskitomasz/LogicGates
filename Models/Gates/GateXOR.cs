@@ -19,7 +19,6 @@ namespace LogicGates.Models
 
         public override void Clicked(Position mousePosition)
         {
-            throw new NotImplementedException();
         }
     }
 }
