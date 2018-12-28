@@ -32,9 +32,6 @@ namespace LogicGates.Models
             }
         }
 
-        public override void Render() =>
-            Drawer.RenderTexture(Texture, Output.Renderer, Position.Width, Position.Height, Size.Width, Size.Height);
-
         void ContiuneButton() =>
             Harness.LoadGame();
 

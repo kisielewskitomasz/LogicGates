@@ -22,27 +22,5 @@ namespace LogicGates.Models
         public override void Clicked(Position mousePosition)
         {
         }
-
-        public override void Render()
-        {
-            Drawer.RenderTexture(Texture, Output.Renderer, 0, 0, Size.Width, Size.Height);
-        }
-
-        // for single tile
-        // public override void Render(IntPtr renderer)
-        // {
-
-        //     var xTiles = Canvas.Width / Size.Width;
-        //     var yTiles = Canvas.Height / Size.Height;
-        //     int x, y;
-
-        //     for(var i = 0; i < (xTiles * yTiles); i++)
-        //     {
-        //         x = (i % xTiles) * Size.Width;
-        //         y = (i / xTiles) * Size.Height;
-
-        //         Drawer.RenderTexture(Texture, renderer, x, y, Size.Width, Size.Height);
-        //     }
-        // }
     }
 }
