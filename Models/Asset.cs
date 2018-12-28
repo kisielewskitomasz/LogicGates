@@ -32,8 +32,8 @@ namespace LogicGates.Models
             Size = size;
             Position = position;
         }
-
-        public abstract void Render();
+        public virtual void Render() =>
+            Drawer.RenderTexture(Texture, Output.Renderer, Position.Width, Position.Height, Size.Width, Size.Height);
 
         public abstract void Clicked(Position mousePosition);
     }
