@@ -7,6 +7,7 @@ namespace LogicGates.Models.Screens
 {
     public class Background : Asset
     {
+        public override Size Size { get; protected set; } = new Size {Width = Canvas.Width, Height = Canvas.Height};
         protected override string FileName { get; set; } = "background.png";
 
         public Background() : base()
@@ -14,6 +15,10 @@ namespace LogicGates.Models.Screens
         }
 
         public Background(Size size) : base(size)
+        {
+        }
+
+        public Background(Position position) : base(position)
         {
         }
 

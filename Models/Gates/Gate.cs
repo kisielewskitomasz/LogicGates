@@ -16,6 +16,10 @@ namespace LogicGates.Models
         {
         }
 
+        public Gate(Position position) : base(position)
+        {
+        }
+
         public Gate(Size size, Position position) : base(size, position)
         {
         }

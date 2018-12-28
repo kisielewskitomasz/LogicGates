@@ -5,6 +5,7 @@ namespace LogicGates.Models.Elements
 {
     public class LogicZero : Logic
     {
+        public override Size Size { get; protected set; } = new Size {Width = 72, Height = 72};
         protected override string FileName { get; set; } = "symbol_logic0.png";
 
         public LogicZero()
@@ -12,6 +13,10 @@ namespace LogicGates.Models.Elements
         }
 
         public LogicZero(Size size) : base(size)
+        {
+        }
+
+        public LogicZero(Position position) : base(position)
         {
         }
 

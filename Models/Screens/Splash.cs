@@ -8,6 +8,7 @@ namespace LogicGates.Models.Screens
 {
     public class Splash : Asset
     {
+        public override Size Size { get; protected set; } = new Size {Width = 384, Height = 384};
         protected override string FileName { get; set; } = "splash.png";
 
         public Splash(string fileName) : base()
@@ -15,6 +16,10 @@ namespace LogicGates.Models.Screens
         }
 
         public Splash(Size size) : base(size)
+        {
+        }
+
+        public Splash(Position position) : base(position)
         {
         }
 

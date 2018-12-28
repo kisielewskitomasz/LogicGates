@@ -8,10 +8,10 @@ namespace LogicGates.Models
     public abstract class Asset
     {
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
-        public Size Size;
+        public abstract Size Size { get; protected set; }
         public Position Position;
-
         protected abstract string FileName { get; set; }
+
 
         public Asset()
         {
@@ -27,6 +27,11 @@ namespace LogicGates.Models
         public Asset(Size size) : this()
         {
             Size = size;
+        }
+
+        public Asset(Position position) : this()
+        {
+            Position = position;
         }
 
         public Asset(Size size, Position position) : this()

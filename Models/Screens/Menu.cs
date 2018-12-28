@@ -7,6 +7,7 @@ namespace LogicGates.Models.Screens
 {
     public class Menu : Asset
     {
+        public override Size Size { get; protected set; } = new Size {Width = 384, Height = 384};
         protected override string FileName { get; set; } = "menu.png";
 
         public Menu() : base()
@@ -14,6 +15,10 @@ namespace LogicGates.Models.Screens
         }
 
         public Menu(Size size) : base(size)
+        {
+        }
+
+        public Menu(Position position) : base(position)
         {
         }
 

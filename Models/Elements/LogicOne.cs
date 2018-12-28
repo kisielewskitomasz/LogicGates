@@ -5,6 +5,7 @@ namespace LogicGates.Models.Elements
 {
     public class LogicOne : Logic
     {
+        public override Size Size { get; protected set; } = new Size {Width = 72, Height = 72};
         protected override string FileName { get; set; } = "symbol_logic1.png";
 
         public LogicOne()
@@ -12,6 +13,10 @@ namespace LogicGates.Models.Elements
         }
 
         public LogicOne(Size size) : base(size)
+        {
+        }
+
+        public LogicOne(Position position) : base(position)
         {
         }
 

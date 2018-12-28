@@ -5,6 +5,7 @@ namespace LogicGates.Models
 {
     public class GateOR : Gate
     {
+        public override Size Size { get; protected set; } = new Size {Width = 72, Height = 72};
         protected override string FileName { get; set; } = "symbol_or.png";
 
         public GateOR() : base()
@@ -12,6 +13,10 @@ namespace LogicGates.Models
         }
 
         public GateOR(Size size) : base(size)
+        {
+        }
+
+        public GateOR(Position position) : base(position)
         {
         }
 
