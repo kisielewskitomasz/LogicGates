@@ -3,7 +3,7 @@ using SDL2;
 using LogicGates.Engine;
 using LogicGates.Common;
 
-namespace LogicGates.Models.Screens
+namespace LogicGates.Models.Images
 {
     public class Menu : Asset
     {

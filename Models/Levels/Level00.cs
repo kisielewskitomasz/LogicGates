@@ -18,7 +18,7 @@ namespace LogicGates.Models
                 Width = (Canvas.Width / 2) - (menuSize.Width / 2),
                 Height = (Canvas.Height / 2) - (menuSize.Height / 2)
             };
-            AsstesList.Add(new Screens.Menu(menuSize, menuPosition));
+            AsstesList.Add(new Images.Menu(menuSize, menuPosition));
         }
     }
 }
