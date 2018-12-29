@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
     public class Wire : Asset
     {
         public override Size Size { get; protected set; } = new Size {Width = 72, Height = 72};
-        protected override string FileName { get; set; } = "wire.png";
+        protected override string FileName { get; set; } = "symbol_wire.png";
 
         public Wire() : base()
         {
@@ -26,7 +26,6 @@ namespace LogicGates.Models.Elements
 
         public override void Clicked(Position mousePosition)
         {
-            throw new NotImplementedException();
         }
     }
 }
