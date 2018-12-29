@@ -27,7 +27,6 @@ namespace LogicGates.Engine
                             var mousePosition = new Position();
                                 if (SDL.SDL_GetMouseState(out mousePosition.Width, out mousePosition.Height) == SDL.SDL_BUTTON(SDL.SDL_BUTTON_LEFT))
                                 {
-                                    System.Console.WriteLine($"Left click at: {mousePosition.Width}, {mousePosition.Height}");
                                     var reversedAssetList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
                                     reversedAssetList.Reverse();
                                     foreach (var asset in reversedAssetList)
@@ -35,7 +34,7 @@ namespace LogicGates.Engine
                                         if ((mousePosition.Width >= asset.Position.Width) && (mousePosition.Width <= (asset.Position.Width + asset.Size.Width)) &&
                                             (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))
                                         {
-                                            System.Console.WriteLine($"Clicked on :{asset.ToString()}");
+                                            System.Console.WriteLine($"Left click at: {mousePosition.Width}, {mousePosition.Height} on: {asset.ToString()}");
                                             asset.Clicked(mousePosition);
                                             break;
                                         }

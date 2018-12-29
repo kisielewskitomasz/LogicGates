@@ -25,9 +25,7 @@ namespace LogicGates.Engine
         }
 
         public static void LoadGame() {
-            System.Console.WriteLine("Load game");
             try {
-                System.Console.WriteLine("load file");
                 using (StreamReader inputFile = new StreamReader(FilePath.Get("save.dat"))) {
                     string lastLevel = Base64Decode(inputFile.ReadToEnd().TrimEnd());
                     System.Console.WriteLine($"Load level: {lastLevel}");
