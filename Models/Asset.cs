@@ -9,7 +9,7 @@ namespace LogicGates.Models
     {
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
         public abstract Size Size { get; protected set; }
-        public Position Position;
+        public Position Position = new Position();
         public virtual Position InputPosition { get
             {
                 return Position;
