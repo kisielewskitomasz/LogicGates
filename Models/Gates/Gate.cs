@@ -12,6 +12,8 @@ namespace LogicGates.Models
         public override List<Position> InputPositionList { get; protected set; } = new List<Position> { new Position(0, 20), new Position(0, 46) };
         public override List<Position> OutputPositionList { get; protected set; } = new List<Position> { new Position(64, 33) };
 
+        public int State = 0;
+
         public Gate() : base()
         {
         }
@@ -30,15 +32,15 @@ namespace LogicGates.Models
 
         public override void ClickedLeft(Position mousePosition)
         {
-            var relativeMousePosition = mousePosition - this.Position;
+            var relativeMousePosition = (Position)(mousePosition - this.Position);
             foreach (var inputPosition in InputPositionList)
             {
                 if ((relativeMousePosition.Width >= inputPosition.Width) && (relativeMousePosition.Width <= (inputPosition.Width + 8)) &&
                     (relativeMousePosition.Height >= inputPosition.Height) && (relativeMousePosition.Height <= (inputPosition.Height + 6)))
                 {
                     System.Console.WriteLine($"Left click at: {relativeMousePosition.Width}, {relativeMousePosition.Height} on: {this.ToString()} - input: {inputPosition.ToString()}");
-                    // TODO: put here code for click on input
-                    break;
+                    ClickedLeftOnInput(relativeMousePosition);
+                    return;
                 }
             }
 
@@ -48,10 +50,20 @@ namespace LogicGates.Models
                     (relativeMousePosition.Height >= outputPosition.Height) && (relativeMousePosition.Height <= (outputPosition.Height + 6)))
                 {
                     System.Console.WriteLine($"Left click at: {relativeMousePosition.Width}, {relativeMousePosition.Height} on: {this.ToString()} - output: {outputPosition.ToString()}");
-                    // TODO: put here code for click on input
-                    break;
+                    ClickedLeftOnOutput(relativeMousePosition);
+                    return;
                 }
             }
+        }
+
+        void ClickedLeftOnInput(Position relativeMousePosition)
+        {
+
+        }
+
+        void ClickedLeftOnOutput(Position relativeMousePosition)
+        {
+
         }
     }
 }
