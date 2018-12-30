@@ -16,7 +16,7 @@ namespace LogicGates.Engine
 
             Console.WriteLine(message);
 
-            if(!(handler != null && handler()))
+            if (!(handler != null && handler()))
             {
                 throw new Exception(message);
             }

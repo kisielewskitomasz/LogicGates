@@ -10,7 +10,9 @@ namespace LogicGates.Models
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
-        public virtual Position InputPosition { get
+        public virtual Position InputPosition
+        {
+            get
             {
                 return Position;
             }
@@ -23,7 +25,7 @@ namespace LogicGates.Models
         {
             Texture = Loader.LoadTextureFromImage(FileName, Output.Renderer);
 
-            if(Texture == IntPtr.Zero)
+            if (Texture == IntPtr.Zero)
             {
                 Logger.Fatal(nameof(Loader.LoadTextureFromImage),
                     () => Output.ReleaseAndQuit(Output.Window, Output.Renderer, IntPtr.Zero, Texture));

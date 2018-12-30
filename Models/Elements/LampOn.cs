@@ -5,7 +5,7 @@ namespace LogicGates.Models.Elements
 {
     public class LampOn : Lamp
     {
-        public override Size Size { get; protected set; } = new Size {Width = 72, Height = 72};
+        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
         protected override string FileName { get; set; } = "element_lamp_on.png";
 
         public LampOn() : base()

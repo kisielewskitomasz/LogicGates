@@ -8,7 +8,7 @@ namespace LogicGates.Models.Images
 {
     public class Splash : Asset
     {
-        public override Size Size { get; protected set; } = new Size {Width = 384, Height = 384};
+        public override Size Size { get; protected set; } = new Size { Width = 384, Height = 384 };
         protected override string FileName { get; set; } = "image_splash.png";
 
         public Splash(string fileName) : base()
@@ -31,7 +31,7 @@ namespace LogicGates.Models.Images
         {
             if ((mousePosition.Width >= (Position.Width + 32)) && (mousePosition.Width <= (Position.Width + Size.Width - 32)))
             {
-                if((mousePosition.Height >= Position.Height + 32 + (64 * 4)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 5))))
+                if ((mousePosition.Height >= Position.Height + 32 + (64 * 4)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 5))))
                     Back();
             }
         }

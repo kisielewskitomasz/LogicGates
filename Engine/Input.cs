@@ -25,21 +25,21 @@ namespace LogicGates.Engine
                             break;
                         case SDL.SDL_EventType.SDL_MOUSEBUTTONDOWN:
                             var mousePosition = new Position();
-                                if (SDL.SDL_GetMouseState(out mousePosition.Width, out mousePosition.Height) == SDL.SDL_BUTTON(SDL.SDL_BUTTON_LEFT))
+                            if (SDL.SDL_GetMouseState(out mousePosition.Width, out mousePosition.Height) == SDL.SDL_BUTTON(SDL.SDL_BUTTON_LEFT))
+                            {
+                                var reversedAssetList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
+                                reversedAssetList.Reverse();
+                                foreach (var asset in reversedAssetList)
                                 {
-                                    var reversedAssetList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
-                                    reversedAssetList.Reverse();
-                                    foreach (var asset in reversedAssetList)
+                                    if ((mousePosition.Width >= asset.Position.Width) && (mousePosition.Width <= (asset.Position.Width + asset.Size.Width)) &&
+                                        (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))
                                     {
-                                        if ((mousePosition.Width >= asset.Position.Width) && (mousePosition.Width <= (asset.Position.Width + asset.Size.Width)) &&
-                                            (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))
-                                        {
-                                            System.Console.WriteLine($"Left click at: {mousePosition.Width}, {mousePosition.Height} on: {asset.ToString()}");
-                                            asset.Clicked(mousePosition);
-                                            break;
-                                        }
+                                        System.Console.WriteLine($"Left click at: {mousePosition.Width}, {mousePosition.Height} on: {asset.ToString()}");
+                                        asset.Clicked(mousePosition);
+                                        break;
                                     }
                                 }
+                            }
                             break;
                     }
                 }

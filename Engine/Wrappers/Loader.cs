@@ -12,12 +12,12 @@ namespace LogicGates.Engine
 
             var image = SDL.SDL_LoadBMP(FilePath.Get(fileName));
 
-            if(image != IntPtr.Zero)
+            if (image != IntPtr.Zero)
             {
                 texture = SDL.SDL_CreateTextureFromSurface(renderer, image);
                 SDL.SDL_FreeSurface(image);
 
-                if(texture == IntPtr.Zero)
+                if (texture == IntPtr.Zero)
                 {
                     Logger.Error(nameof(SDL.SDL_CreateTextureFromSurface));
                 }
@@ -34,7 +34,7 @@ namespace LogicGates.Engine
         {
             var texture = SDL_image.IMG_LoadTexture(renderer, FilePath.Get(fileName));
 
-            if(texture == IntPtr.Zero)
+            if (texture == IntPtr.Zero)
             {
                 Logger.Error(nameof(SDL_image.IMG_LoadTexture));
             }

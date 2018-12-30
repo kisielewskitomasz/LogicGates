@@ -4,13 +4,14 @@ using System.Reflection;
 
 namespace LogicGates.Common
 {
-    public static class FilePath {
-    static string _basePath = null;
+    public static class FilePath
+    {
+        static string _basePath = null;
         static string BasePath
         {
             get
             {
-                if(string.IsNullOrWhiteSpace(_basePath))
+                if (string.IsNullOrWhiteSpace(_basePath))
                 {
                     _basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources");
                 }
@@ -23,7 +24,7 @@ namespace LogicGates.Common
         {
             var path = Path.Combine(BasePath, fileName);
 
-            if(!File.Exists(path))
+            if (!File.Exists(path))
             {
                 throw new FileNotFoundException(fileName);
             }
@@ -33,7 +34,7 @@ namespace LogicGates.Common
 
         public static string GetNotExisting(string fileName)
         {
-            return Path.Combine(BasePath, fileName);;
+            return Path.Combine(BasePath, fileName); ;
         }
 
     }
