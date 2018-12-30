@@ -22,9 +22,5 @@ namespace LogicGates.Models.Images
         public Tray(Size size, Position position) : base(size, position)
         {
         }
-
-        public override void Clicked(Position mousePosition)
-        {
-        }
     }
 }

@@ -10,16 +10,8 @@ namespace LogicGates.Models
     {
         public Level99()
         {
-            var splashSize = new Size
-            {
-                Width = 384,
-                Height = 384
-            };
-            var splashPosition = new Position
-            {
-                Width = (Canvas.Width / 2) - (splashSize.Width / 2),
-                Height = (Canvas.Height / 2) - (splashSize.Height / 2)
-            };
+            var splashSize = new Size(384, 384);
+            var splashPosition = new Position((Canvas.Width / 2) - (splashSize.Width / 2), (Canvas.Height / 2) - (splashSize.Height / 2));
             AsstesList.Add(new Images.Splash(splashSize, splashPosition));
         }
     }

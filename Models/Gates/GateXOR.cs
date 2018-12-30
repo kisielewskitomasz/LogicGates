@@ -22,9 +22,5 @@ namespace LogicGates.Models
         public GateXOR(Position position) : base(position)
         {
         }
-
-        public override void Clicked(Position mousePosition)
-        {
-        }
     }
 }

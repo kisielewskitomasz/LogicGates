@@ -22,9 +22,5 @@ namespace LogicGates.Models
         public GateOR(Size size, Position position) : base(size, position)
         {
         }
-
-        public override void Clicked(Position mousePosition)
-        {
-        }
     }
 }

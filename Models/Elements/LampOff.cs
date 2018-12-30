@@ -22,9 +22,5 @@ namespace LogicGates.Models.Elements
         public LampOff(Size size, Position position) : base(size, position)
         {
         }
-
-        public override void Clicked(Position mousePosition)
-        {
-        }
     }
 }
