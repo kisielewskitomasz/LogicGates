@@ -8,6 +8,8 @@ namespace LogicGates.Models.Elements
 {
     public abstract class Lamp : Element
     {
+        protected abstract string FileNameAlt { get; set; }
+        protected virtual bool IsAltTexture  { get; set; } = false;
         public Lamp() : base()
         {
         }
@@ -22,6 +24,25 @@ namespace LogicGates.Models.Elements
 
         public Lamp(Size size, Position position) : base(size, position)
         {
+        }
+
+        public virtual void ChangeState()
+        {
+            IsAltTexture = !IsAltTexture;
+
+            if (!IsAltTexture)
+                Texture = Loader.LoadTextureFromImage(FileName, Output.Renderer);
+            else
+                Texture = Loader.LoadTextureFromImage(FileNameAlt, Output.Renderer);
+
+            if (Texture == IntPtr.Zero)
+            {
+                Logger.Fatal(nameof(Loader.LoadTextureFromImage),
+                    () => Output.ReleaseAndQuit(Output.Window, Output.Renderer, IntPtr.Zero, Texture));
+            }
+
+            Harness.RefreshOutput();
+
         }
     }
 }
