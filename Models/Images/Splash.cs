@@ -8,7 +8,7 @@ namespace LogicGates.Models.Images
 {
     public class Splash : Asset
     {
-        public override Size Size { get; protected set; } = new Size { Width = 384, Height = 384 };
+        public override Size Size { get; protected set; } = new Size(384, 384);
         protected override string FileName { get; set; } = "image_splash.png";
 
         public Splash(string fileName) : base()
