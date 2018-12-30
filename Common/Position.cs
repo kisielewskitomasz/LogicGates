@@ -1,5 +1,7 @@
 namespace LogicGates.Common
 {
-    public class Position : Point {
+    public class Position : Point
+    {
+
     }
 }
