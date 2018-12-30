@@ -18,7 +18,7 @@ namespace LogicGates.Models
             trayGatesList.Add(new GateNOT(new Position(0, 0)));
             foreach (var gate in trayGatesList)
             {
-                gate.Position.Width = (Canvas.Width / 2) - (trayGatesList.Count * gate.Size.Width / 2) + (trayGatesList.IndexOf(gate) * gate.Size.Width);
+                gate.Position.Width = (Canvas.Width / 2) - (trayGatesList.Count * gate.Size.Width / 2) - ((trayGatesList.Count - 2) * 8) + (trayGatesList.IndexOf(gate) * (gate.Size.Width + 8));
                 AsstesList.Add(gate);
             }
 
