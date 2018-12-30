@@ -27,7 +27,7 @@ namespace LogicGates.Models.Images
         {
         }
 
-        public override void Clicked(Position mousePosition)
+        public override void ClickedLeft(Position mousePosition)
         {
             if ((mousePosition.Width >= (Position.Width + 32)) && (mousePosition.Width <= (Position.Width + Size.Width - 32)))
             {

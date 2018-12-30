@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using SDL2;
 using LogicGates.Common;
 using LogicGates.Engine;
 
@@ -8,6 +7,8 @@ namespace LogicGates.Models.Elements
 {
     public abstract class Logic : Element
     {
+        public override List<Position> InputPositionList { get; protected set; } = new List<Position>();
+
         public Logic() : base()
         {
         }

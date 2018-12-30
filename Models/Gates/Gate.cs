@@ -28,7 +28,7 @@ namespace LogicGates.Models
         {
         }
 
-        public override void Clicked(Position mousePosition)
+        public override void ClickedLeft(Position mousePosition)
         {
             var relativeMousePosition = mousePosition - this.Position;
             foreach (var inputPosition in InputPositionList)
