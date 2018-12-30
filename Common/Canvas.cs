@@ -2,7 +2,7 @@ namespace LogicGates.Common
 {
     public struct Canvas
     {
-        public const int Width = 1024;
-        public const int Height = 768;
+        public const int Width = 1080;
+        public const int Height = 720;
     }
 }
