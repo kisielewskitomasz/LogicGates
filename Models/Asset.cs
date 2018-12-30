@@ -10,6 +10,12 @@ namespace LogicGates.Models
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
         public abstract Size Size { get; protected set; }
         public Position Position;
+        public virtual Position InputPosition { get
+            {
+                return Position;
+            }
+        }
+        public virtual Position OutputPosition { get; protected set; }
         protected abstract string FileName { get; set; }
 
 
