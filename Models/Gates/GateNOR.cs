@@ -5,7 +5,6 @@ namespace LogicGates.Models
 {
     public class GateNOR : Gate
     {
-        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
         protected override string FileName { get; set; } = "gate_nor.png";
 
         public GateNOR() : base()

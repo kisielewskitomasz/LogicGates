@@ -5,7 +5,6 @@ namespace LogicGates.Models
 {
     public class GateAND : Gate
     {
-        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
         protected override string FileName { get; set; } = "gate_and.png";
 
         public GateAND() : base()
@@ -18,6 +17,7 @@ namespace LogicGates.Models
 
         public GateAND(Position position) : base(position)
         {
+
         }
 
         public GateAND(Size size, Position position) : base(size, position)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LogicGates.Engine;
 using LogicGates.Common;
 
@@ -10,14 +11,8 @@ namespace LogicGates.Models
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
-        public virtual Position InputPosition
-        {
-            get
-            {
-                return Position;
-            }
-        }
-        public virtual Position OutputPosition { get; protected set; }
+        public virtual List<Position> InputPositionList { get; protected set; } = new List<Position>();
+        public virtual List<Position> OutputPositionList { get; protected set; } = new List<Position>();
         protected abstract string FileName { get; set; }
 
 

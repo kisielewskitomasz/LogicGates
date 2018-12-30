@@ -5,7 +5,6 @@ namespace LogicGates.Models.Elements
 {
     public class LogicZero : Logic
     {
-        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
         protected override string FileName { get; set; } = "element_logic0.png";
 
         public LogicZero()

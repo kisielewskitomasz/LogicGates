@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using LogicGates.Common;
 
 namespace LogicGates.Models
 {
     public class GateNOT : Gate
     {
-        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
+        public override List<Position> InputPositionList { get; protected set; } = new List<Position>{new Position(8, 33)};
         protected override string FileName { get; set; } = "gate_not.png";
 
         public GateNOT() : base()

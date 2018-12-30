@@ -3,9 +3,8 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
-    public class Ground : Asset
+    public class Ground : Element
     {
-        public override Size Size { get; protected set; } = new Size { Width = 72, Height = 72 };
         protected override string FileName { get; set; } = "element_ground.png";
 
         public Ground() : base()

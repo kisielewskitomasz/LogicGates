@@ -6,7 +6,7 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models.Elements
 {
-    public abstract class Lamp : Asset
+    public abstract class Lamp : Element
     {
         public Lamp() : base()
         {
