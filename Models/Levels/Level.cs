@@ -16,5 +16,15 @@ namespace LogicGates.Models
             AsstesList.Add(new Images.Background());
             SDL.SDL_RenderClear(Output.Renderer);
         }
+
+        public void Add(Asset asset)
+        {
+            AsstesList.Add(asset);
+        }
+
+         public void Remove(Asset asset)
+        {
+            AsstesList.Remove(asset);
+        }
     }
 }
