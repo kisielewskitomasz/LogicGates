@@ -6,6 +6,7 @@ namespace LogicGates.Models.Elements
     public class Wire : Element
     {
         protected override string FileName { get; set; } = "element_wire.png";
+        public override Size Size { get; protected set; } = new Size(1, 6);
 
         public Wire() : base()
         {
