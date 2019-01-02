@@ -8,6 +8,7 @@ namespace LogicGates.Models
 {
     public abstract class Gate : Asset
     {
+        public override bool IsMovable { get; protected set; } = true;
         public override Size Size { get; protected set; } = new Size(72, 72);
         public override List<Position> InputPositionList { get; protected set; } = new List<Position> { new Position(0, 20), new Position(0, 46) };
         public override List<Position> OutputPositionList { get; protected set; } = new List<Position> { new Position(64, 33) };
@@ -32,7 +33,7 @@ namespace LogicGates.Models
 
         public override void ClickedLeft(Position mousePosition)
         {
-            var relativeMousePosition = (Position)(mousePosition - this.Position);
+            var relativeMousePosition = (mousePosition - this.Position);
             foreach (var inputPosition in InputPositionList)
             {
                 if ((relativeMousePosition.Width >= inputPosition.Width) && (relativeMousePosition.Width <= (inputPosition.Width + 8)) &&
@@ -56,12 +57,12 @@ namespace LogicGates.Models
             }
         }
 
-        void ClickedLeftOnInput(Position relativeMousePosition)
+        void ClickedLeftOnInput(Point relativeMousePosition)
         {
 
         }
 
-        void ClickedLeftOnOutput(Position relativeMousePosition)
+        void ClickedLeftOnOutput(Point relativeMousePosition)
         {
 
         }
