@@ -68,9 +68,9 @@ namespace LogicGates.Engine
         private static Asset FindClickedAsset(Position mousePosition)
         {
             Asset _asset = null;
-            var reversedAssetList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
-            reversedAssetList.Reverse();
-            foreach (var asset in reversedAssetList)
+            var reversedAssetsList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
+            reversedAssetsList.Reverse();
+            foreach (var asset in reversedAssetsList)
             {
                 if ((mousePosition.Width >= asset.Position.Width) && (mousePosition.Width <= (asset.Position.Width + asset.Size.Width)) &&
                     (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))

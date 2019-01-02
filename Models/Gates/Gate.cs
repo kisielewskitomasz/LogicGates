@@ -10,8 +10,8 @@ namespace LogicGates.Models
     {
         public override bool IsMovable { get; protected set; } = true;
         public override Size Size { get; protected set; } = new Size(72, 72);
-        public override List<Position> InputPositionList { get; protected set; } = new List<Position> { new Position(0, 20), new Position(0, 46) };
-        public override List<Position> OutputPositionList { get; protected set; } = new List<Position> { new Position(64, 33) };
+        public override List<Position> InputPositionsList { get; protected set; } = new List<Position> { new Position(0, 20), new Position(0, 46) };
+        public override List<Position> OutputPositionsList { get; protected set; } = new List<Position> { new Position(64, 33) };
 
         public int State = 0;
 
@@ -34,7 +34,7 @@ namespace LogicGates.Models
         public override void ClickedLeft(Position mousePosition)
         {
             var relativeMousePosition = (mousePosition - this.Position);
-            foreach (var inputPosition in InputPositionList)
+            foreach (var inputPosition in InputPositionsList)
             {
                 if ((relativeMousePosition.Width >= inputPosition.Width) && (relativeMousePosition.Width <= (inputPosition.Width + 8)) &&
                     (relativeMousePosition.Height >= inputPosition.Height) && (relativeMousePosition.Height <= (inputPosition.Height + 6)))
@@ -45,7 +45,7 @@ namespace LogicGates.Models
                 }
             }
 
-            foreach (var outputPosition in OutputPositionList)
+            foreach (var outputPosition in OutputPositionsList)
             {
                 if ((relativeMousePosition.Width >= outputPosition.Width) && (relativeMousePosition.Width <= (outputPosition.Width + 8)) &&
                     (relativeMousePosition.Height >= outputPosition.Height) && (relativeMousePosition.Height <= (outputPosition.Height + 6)))

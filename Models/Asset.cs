@@ -12,8 +12,8 @@ namespace LogicGates.Models
         public virtual bool IsMovable { get; protected set; } = false;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
-        public virtual List<Position> InputPositionList { get; protected set; } = new List<Position>();
-        public virtual List<Position> OutputPositionList { get; protected set; } = new List<Position>();
+        public virtual List<Position> InputPositionsList { get; protected set; } = new List<Position>();
+        public virtual List<Position> OutputPositionsList { get; protected set; } = new List<Position>();
         protected abstract string FileName { get; set; }
 
 

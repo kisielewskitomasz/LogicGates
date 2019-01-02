@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
 {
     public class Ground : Element
     {
-        public override List<Position> OutputPositionList { get; protected set; } = new List<Position>();
+        public override List<Position> OutputPositionsList { get; protected set; } = new List<Position>();
         protected override string FileName { get; set; } = "element_ground.png";
 
         public Ground() : base()
