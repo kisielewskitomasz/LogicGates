@@ -28,9 +28,8 @@ namespace LogicGates.Models
         {
         }
 
-        public override void ClickedLeft(Position mousePosition)
+        public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
         {
-            var relativeMousePosition = mousePosition - this.Position;
             foreach (var inputPosition in InputPositionsList)
             {
                 if ((relativeMousePosition.Width >= inputPosition.Width) && (relativeMousePosition.Width <= (inputPosition.Width + 8)) &&
@@ -48,7 +47,7 @@ namespace LogicGates.Models
                     (relativeMousePosition.Height >= outputPosition.Height) && (relativeMousePosition.Height <= (outputPosition.Height + 6)))
                 {
                     System.Console.WriteLine($"Left click at: {relativeMousePosition.Width}, {relativeMousePosition.Height} on: {this.ToString()} - output: {outputPosition.ToString()}");
-                    // TODO: put here code for click on input
+                    // TODO: put here code for click on output
                     break;
                 }
             }

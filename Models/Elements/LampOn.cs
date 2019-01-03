@@ -25,7 +25,8 @@ namespace LogicGates.Models.Elements
         {
         }
 
-        public override void ClickedLeft(Position mousePosition) {
+        public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
+        {
             ChangeState();
         }
     }
