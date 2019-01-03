@@ -8,14 +8,15 @@ namespace LogicGates.Models
 
     public abstract class Asset
     {
+        protected abstract string FileName { get; set; }
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
         public virtual bool IsMovable { get; protected set; } = false;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
         public virtual List<Position> InputPositionsList { get; protected set; } = new List<Position>();
         public virtual List<Position> OutputPositionsList { get; protected set; } = new List<Position>();
-        protected abstract string FileName { get; set; }
-
+        public virtual List<Object> InputPinsList { get; protected set; } = new List<Object>();
+        public virtual List<Object> OutputPinsList { get; protected set; } = new List<Object>();
 
         public Asset()
         {
