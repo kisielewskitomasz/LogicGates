@@ -55,6 +55,8 @@ namespace LogicGates.Engine
                 System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
 
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
+                // find out if click was on input/output pin (maybe return bool isClickedOnPinIO = ClickedLeft())
+
                 if ((ClickedAsset.IsMovable) && (_state == 0))
                 {
                     _state = 1;
