@@ -43,19 +43,6 @@ namespace LogicGates.Engine
                     break;
             }
         }
-
-        private static void OnSDL_MOUSEMOTION()
-        {
-            if (_state == 1)
-            {
-                SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
-
-                ClickedAsset.Position = MousePosition + RelativeMousePosition;
-
-                Harness.RefreshOutput();
-            }
-        }
-
         static void OnSDL_MOUSEBUTTONDOWN()
         {
             var clickedButton = SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
@@ -63,11 +50,13 @@ namespace LogicGates.Engine
             {
                 System.Console.Write("Left ");
                 ClickedAsset = FindClickedAsset(MousePosition);
+                RelativeMousePosition = (MousePosition - ClickedAsset.Position);
 
-                ClickedAsset.ClickedLeft(MousePosition);
+                System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
+
+                ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
                 if ((ClickedAsset.IsMovable) && (_state == 0))
                 {
-                    RelativeMousePosition = (ClickedAsset.Position - MousePosition);
                     _state = 1;
                 }
                 else if ((ClickedAsset.IsMovable) && (_state == 1))
@@ -79,17 +68,27 @@ namespace LogicGates.Engine
             {
                 System.Console.Write("Right ");
                 ClickedAsset = FindClickedAsset(MousePosition);
-                ClickedAsset.ClickedRight(MousePosition);
+                ClickedAsset.ClickedRight(MousePosition, RelativeMousePosition);
                 _state = 0;
             }
         }
 
-        private static void OnSDL_QUIT()
+        static void OnSDL_MOUSEMOTION()
+        {
+            if (_state == 1)
+            {
+                SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
+                ClickedAsset.Position = MousePosition - RelativeMousePosition;
+                Harness.RefreshOutput();
+            }
+        }
+
+        static void OnSDL_QUIT()
         {
             Harness.QuitGame();
         }
 
-        private static Asset FindClickedAsset(Position mousePosition)
+        static Asset FindClickedAsset(Position mousePosition)
         {
             Asset _asset = null;
             var reversedAssetsList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
