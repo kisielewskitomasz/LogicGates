@@ -57,12 +57,12 @@ namespace LogicGates.Models
             }
         }
 
-        void ClickedLeftOnInput(Point relativeMousePosition)
+        void ClickedLeftOnInput(Position relativeMousePosition)
         {
 
         }
 
-        void ClickedLeftOnOutput(Point relativeMousePosition)
+        void ClickedLeftOnOutput(Position relativeMousePosition)
         {
 
         }
