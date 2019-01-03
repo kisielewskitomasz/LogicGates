@@ -3,25 +3,27 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
-    public class Wire : Element
+    public abstract class Wire : Element
     {
-        protected override string FileName { get; set; } = "element_wire.png";
-        public override Size Size { get; protected set; } = new Size(1, 6);
-
-        public Wire() : base()
+        protected Line ParentLine = null;
+        public Wire(Line parentLine) : base()
         {
+            ParentLine = parentLine;
         }
 
-        public Wire(Size size) : base(size)
+        public Wire(Size size, Line parentLine) : base(size)
         {
+            ParentLine = parentLine;
         }
 
-        public Wire(Position position) : base(position)
+        public Wire(Position position, Line parentLine) : base(position)
         {
+            ParentLine = parentLine;
         }
 
-        public Wire(Size size, Position position) : base(size, position)
+        public Wire(Size size, Position position, Line parentLine) : base(size, position)
         {
+            ParentLine = parentLine;
         }
     }
 }
