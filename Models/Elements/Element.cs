@@ -10,7 +10,7 @@ namespace LogicGates.Models.Elements
     {
         public override Size Size { get; protected set; } = new Size(72, 72);
         public virtual int State { get; protected set; } = -1;
-        public virtual List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, IO.In) };
+        public abstract List<Pin> PinsList { get; protected set; }
 
         public Element() : base()
         {
