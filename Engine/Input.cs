@@ -54,21 +54,23 @@ namespace LogicGates.Engine
                 System.Console.Write("Left ");
                 FindClickedAsset(MousePosition);
 
-                System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
+                //System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
 
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
                 // find out if click was on input/output pin (maybe return bool isClickedOnPinIO = ClickedLeft())
 
                 if ((MouseState == MS.Idle))
                 {
-                    if (ClickedAsset.IsMovable)
+                    if (ClickedAsset is Element)
                     {
-                        if (ClickedAssetPin == null)
-                            MouseState = MS.Move;
-                        else
+                        if (ClickedAssetPin != null)
                         {
                             SelectedAssetPin = ClickedAssetPin;
                             MouseState = MS.Select;
+                        }
+                        else if (ClickedAsset.IsMovable)
+                        {
+                            MouseState = MS.Move;
                         }
                     }
                 }
@@ -90,6 +92,12 @@ namespace LogicGates.Engine
                             Harness.GameCurrentLevel.AsstesList.Add(item);
                         }
                         Harness.RefreshOutput();
+                        MouseState = MS.Idle;
+                    }
+                    else
+                    {
+                        ClickedAssetPin = null;
+                        SelectedAssetPin = null;
                         MouseState = MS.Idle;
                     }
                 }
@@ -141,12 +149,15 @@ namespace LogicGates.Engine
         {
             foreach (var pin in ((Element)ClickedAsset).PinsList)
             {
-                if ((RelativeMousePosition.Width >= pin.Position.Width) && (RelativeMousePosition.Width <= (pin.Position.Width + 8)) &&
-                    (RelativeMousePosition.Height >= pin.Position.Height) && (RelativeMousePosition.Height <= (pin.Position.Height + 6)))
+                if ((RelativeMousePosition.Width >= pin.Position.Width) && (RelativeMousePosition.Width <= (pin.Position.Width + pin.Size.Width)) &&
+                    (RelativeMousePosition.Height >= pin.Position.Height) && (RelativeMousePosition.Height <= (pin.Position.Height + pin.Size.Height)))
                 {
-                    ClickedAssetPin = pin;
-                    System.Console.WriteLine($"Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()} - input: {ClickedAssetPin.ToString()}");
-                    return;
+                    if (!pin.isConnected)
+                    {
+                        ClickedAssetPin = pin;
+                        System.Console.WriteLine($"Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAssetPin.ToString()} - {ClickedAssetPin.Type.ToString()}");
+                        return;
+                    }
                 }
             }
             ClickedAssetPin = null;
