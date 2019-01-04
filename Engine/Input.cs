@@ -82,7 +82,7 @@ namespace LogicGates.Engine
                     {
                         MouseState = MS.Idle;
                     }
-                    else
+                    else if (SelectedAssetPin.Type != ClickedAssetPin.Type)
                     {
                         var connection = new Connection(SelectedAssetPin, ClickedAssetPin);
                         foreach (var item in connection.WiresList)
