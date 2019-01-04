@@ -8,8 +8,8 @@ namespace LogicGates.Models.Elements
 {
     public abstract class Gate : Element
     {
-        public override bool IsMovable { get; protected set; } = true;
-        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 20, IO.In), new Pin(0, 46, IO.In), new Pin(64, 33, IO.Out)  };
+        public override bool IsMovable { get; set; } = true;
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 20, IO.In), new Pin(0, 46, IO.In), new Pin(66, 33, IO.Out)  };
 
         public Gate() : base()
         {
