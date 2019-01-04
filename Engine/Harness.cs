@@ -69,10 +69,22 @@ namespace LogicGates.Engine
             Input.Quit();
         }
 
+        public static void ReloadLevel()
+        {
+            Type type = Harness.GameCurrentLevel.GetType();
+            Harness.GameCurrentLevel = (Level)Activator.CreateInstance(type);
+            Harness.RefreshOutput();
+        }
+
         public static void ResetGame()
         {
             Harness.GameCurrentLevel = new Level01();
             Harness.RefreshOutput();
+        }
+
+        public static void SimulateLevel()
+        {
+            System.Console.WriteLine("simulation...");
         }
 
         static string Base64Encode(string plainText)
