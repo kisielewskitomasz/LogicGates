@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
     public class WireVertical : Wire
     {
         protected override string FileName { get; set; } = "element_wire_vertical.png";
-        public override Size Size { get; protected set; } = new Size(1, 6);
+        public override Size Size { get; protected set; } = new Size(Wire.Thickness, 1);
 
         public WireVertical(Connection parentLine) : base(parentLine)
         {

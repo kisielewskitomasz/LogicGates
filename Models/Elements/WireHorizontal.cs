@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
     public class WireHorizontal : Wire
     {
         protected override string FileName { get; set; } = "element_wire_horizontal.png";
-        public override Size Size { get; protected set; } = new Size(1, 6);
+        public override Size Size { get; protected set; } = new Size(1, Wire.Thickness);
 
         public WireHorizontal(Connection parentLine) : base(parentLine)
         {
