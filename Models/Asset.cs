@@ -10,7 +10,7 @@ namespace LogicGates.Models
     {
         protected abstract string FileName { get; set; }
         public IntPtr Texture { get; protected set; } = IntPtr.Zero;
-        public virtual bool IsMovable { get; protected set; } = false;
+        public virtual bool IsMovable { get; set; } = false;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
 
