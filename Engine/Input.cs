@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using SDL2;
 using LogicGates.Models;
+using LogicGates.Models.Elements;
 using LogicGates.Engine;
 using LogicGates.Common;
 
@@ -10,11 +11,13 @@ namespace LogicGates.Engine
     public class Input
     {
         static bool _quit = false;
-        static int _state = 0;
+        static MS MouseState { get; set; } = 0;
 
         static Asset ClickedAsset { get; set; } = null;
+        static Pin ClickedAssetPin { get; set; } = null;
+        static Pin SelectedAssetPin { get; set; } = null;
         static Position MousePosition { get; set; } = new Position();
-        static Position RelativeMousePosition { get; set; } = null;
+        static Position RelativeMousePosition { get; set; } = new Position();
 
         public Input()
         {
@@ -49,35 +52,60 @@ namespace LogicGates.Engine
             if (clickedButton == SDL.SDL_BUTTON(SDL.SDL_BUTTON_LEFT))
             {
                 System.Console.Write("Left ");
-                ClickedAsset = FindClickedAsset(MousePosition);
-                RelativeMousePosition = (MousePosition - ClickedAsset.Position);
+                FindClickedAsset(MousePosition);
 
                 System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
 
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
                 // find out if click was on input/output pin (maybe return bool isClickedOnPinIO = ClickedLeft())
 
-                if ((ClickedAsset.IsMovable) && (_state == 0))
+                if ((MouseState == MS.Idle))
                 {
-                    _state = 1;
+                    if (ClickedAsset.IsMovable)
+                    {
+                        if (ClickedAssetPin == null)
+                            MouseState = MS.Move;
+                        else
+                        {
+                            SelectedAssetPin = ClickedAssetPin;
+                            MouseState = MS.Select;
+                        }
+                    }
                 }
-                else if ((ClickedAsset.IsMovable) && (_state == 1))
+                else if (MouseState == MS.Move)
                 {
-                    _state = 0;
+                    MouseState = MS.Idle;
+                }
+                else if (MouseState == MS.Select)
+                {
+                    if (ClickedAssetPin == null)
+                    {
+                        MouseState = MS.Idle;
+                    }
+                    else
+                    {
+                        var connection = new Connection(SelectedAssetPin, ClickedAssetPin);
+                        foreach (var item in connection.WiresList)
+                        {
+                            Harness.GameCurrentLevel.AsstesList.Add(item);
+                        }
+                        Harness.RefreshOutput();
+                        MouseState = MS.Idle;
+                    }
                 }
             }
             else if (clickedButton == SDL.SDL_BUTTON(SDL.SDL_BUTTON_RIGHT))
             {
                 System.Console.Write("Right ");
-                ClickedAsset = FindClickedAsset(MousePosition);
+                FindClickedAsset(MousePosition);
                 ClickedAsset.ClickedRight(MousePosition, RelativeMousePosition);
-                _state = 0;
+                MouseState = MS.Idle;
             }
         }
 
         static void OnSDL_MOUSEMOTION()
         {
-            if (_state == 1)
+            if (MouseState == MS.Move)
             {
                 SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
                 ClickedAsset.Position = MousePosition - RelativeMousePosition;
@@ -90,9 +118,8 @@ namespace LogicGates.Engine
             Harness.QuitGame();
         }
 
-        static Asset FindClickedAsset(Position mousePosition)
+        static void FindClickedAsset(Position mousePosition)
         {
-            Asset _asset = null;
             var reversedAssetsList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
             reversedAssetsList.Reverse();
             foreach (var asset in reversedAssetsList)
@@ -101,10 +128,28 @@ namespace LogicGates.Engine
                     (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))
                 {
                     System.Console.WriteLine($"Click at: {mousePosition.Width}, {mousePosition.Height} on: {asset.ToString()}");
-                    return asset;
+                    ClickedAsset = asset;
+                    RelativeMousePosition = (MousePosition - ClickedAsset.Position);
+                    if (ClickedAsset is Element)
+                        FindClickedAssetPin(mousePosition);
+                    return;
                 }
             }
-            return _asset;
+            ClickedAsset = null;
+        }
+        static void FindClickedAssetPin(Position mousePosition)
+        {
+            foreach (var pin in ((Element)ClickedAsset).PinsList)
+            {
+                if ((RelativeMousePosition.Width >= pin.Position.Width) && (RelativeMousePosition.Width <= (pin.Position.Width + 8)) &&
+                    (RelativeMousePosition.Height >= pin.Position.Height) && (RelativeMousePosition.Height <= (pin.Position.Height + 6)))
+                {
+                    ClickedAssetPin = pin;
+                    System.Console.WriteLine($"Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()} - input: {ClickedAssetPin.ToString()}");
+                    return;
+                }
+            }
+            ClickedAssetPin = null;
         }
 
         public static void Quit()
