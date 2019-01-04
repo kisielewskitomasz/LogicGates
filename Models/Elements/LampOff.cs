@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
@@ -24,7 +25,7 @@ namespace LogicGates.Models.Elements
         {
         }
 
-        public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
+        public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
         {
             ChangeState();
         }
