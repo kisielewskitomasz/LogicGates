@@ -7,7 +7,7 @@ namespace LogicGates.Models.Elements
 {
     public abstract class Logic : Element
     {
-        public override List<Position> InputPositionsList { get; protected set; } = new List<Position>();
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin>();
 
         public Logic() : base()
         {

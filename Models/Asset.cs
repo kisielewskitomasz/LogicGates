@@ -13,10 +13,6 @@ namespace LogicGates.Models
         public virtual bool IsMovable { get; protected set; } = false;
         public abstract Size Size { get; protected set; }
         public Position Position = new Position();
-        public virtual List<Position> InputPositionsList { get; protected set; } = new List<Position>();
-        public virtual List<Position> OutputPositionsList { get; protected set; } = new List<Position>();
-        public virtual List<Object> InputPinsList { get; protected set; } = new List<Object>();
-        public virtual List<Object> OutputPinsList { get; protected set; } = new List<Object>();
 
         public Asset()
         {
@@ -52,7 +48,26 @@ namespace LogicGates.Models
 
         }
 
+        public virtual void ClickedLeftOnInput(Position mousePosition, Position relativeMousePosition)
+        {
+
+        }
+        public virtual void ClickedLeftOnOutput(Position mousePosition, Position relativeMousePosition)
+        {
+
+        }
+
         public virtual void ClickedRight(Position mousePosition, Position relativeMousePosition)
+        {
+
+        }
+
+        public virtual void ClickedRightOnInput(Position mousePosition, Position relativeMousePosition)
+        {
+
+        }
+
+        public virtual void ClickedRightOnOutput(Position mousePosition, Position relativeMousePosition)
         {
 
         }
