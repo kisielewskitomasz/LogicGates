@@ -1,7 +1,7 @@
 using System;
 using LogicGates.Common;
 
-namespace LogicGates.Models
+namespace LogicGates.Models.Elements
 {
     public class GateOR : Gate
     {

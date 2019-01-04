@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using LogicGates.Common;
 
-namespace LogicGates.Models
+namespace LogicGates.Models.Elements
 {
     public class GateNOT : Gate
     {
-        public override List<Position> InputPositionsList { get; protected set; } = new List<Position> { new Position(0, 33) };
-        public override List<Position> OutputPositionsList { get; protected set; } = new List<Position> { new Position(64, 33) };
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, IO.In), new Pin(64, 33, IO.Out) };
         protected override string FileName { get; set; } = "gate_not.png";
 
         public GateNOT() : base()
