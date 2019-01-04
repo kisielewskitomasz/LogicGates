@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
 {
     public class Ground : Element
     {
-        public override List<Pin> PinsList { get; protected set; } = new List<Pin>();
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, IO.In)};
         protected override string FileName { get; set; } = "element_ground.png";
 
         public Ground() : base()

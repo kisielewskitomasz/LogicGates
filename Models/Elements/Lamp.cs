@@ -10,6 +10,7 @@ namespace LogicGates.Models.Elements
     {
         protected abstract string FileNameAlt { get; set; }
         protected virtual bool IsAltTexture  { get; set; } = false;
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, IO.In), new Pin(66, 33, IO.Out) };
         public Lamp() : base()
         {
         }
