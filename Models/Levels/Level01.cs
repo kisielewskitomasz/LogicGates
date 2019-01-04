@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SDL2;
 using LogicGates.Common;
 using LogicGates.Engine;
+using LogicGates.Models.Elements;
 
 namespace LogicGates.Models
 {
@@ -22,25 +23,25 @@ namespace LogicGates.Models
                 AsstesList.Add(gate);
             }
 
-            var logicSourcesList = new List<Elements.Logic>();
-            logicSourcesList.Add(new Elements.LogicOne(new Position(18 + 72, 0)));
-            logicSourcesList.Add(new Elements.LogicZero(new Position(18 + 72, 0)));
+            var logicSourcesList = new List<Logic>();
+            logicSourcesList.Add(new LogicOne(new Position(18 + 72, 0)));
+            logicSourcesList.Add(new LogicZero(new Position(18 + 72, 0)));
             foreach (var source in logicSourcesList)
             {
                 source.Position.Height = (Canvas.Height / 2) - (logicSourcesList.Count * source.Size.Height / 2) - 18 + (logicSourcesList.IndexOf(source) * source.Size.Height);
                 AsstesList.Add(source);
             }
 
-            var lampsList = new List<Elements.Lamp>();
-            lampsList.Add(new Elements.LampOn(new Position(Canvas.Width - (18 + 72 * 3), 0)));
-            lampsList.Add(new Elements.LampOff(new Position(Canvas.Width - (18 + 72 * 3), 0)));
+            var lampsList = new List<Lamp>();
+            lampsList.Add(new LampOn(new Position(Canvas.Width - (18 + 72 * 3), 0)));
+            lampsList.Add(new LampOff(new Position(Canvas.Width - (18 + 72 * 3), 0)));
             foreach (var lamp in lampsList)
             {
                 lamp.Position.Height = (Canvas.Height / 2) - (lampsList.Count * lamp.Size.Height / 2) - 18 + (lampsList.IndexOf(lamp) * lamp.Size.Height);
                 AsstesList.Add(lamp);
             }
 
-            AsstesList.Add(new Elements.Ground(new Position(Canvas.Width - (72 * 2) - 18, Canvas.Height - (72 * 3))));
+            AsstesList.Add(new Ground(new Position(Canvas.Width - (72 * 2) - 18, Canvas.Height - (72 * 3))));
 
             Harness.SaveGame();
         }
