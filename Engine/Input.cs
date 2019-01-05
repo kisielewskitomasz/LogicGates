@@ -53,17 +53,13 @@ namespace LogicGates.Engine
             {
                 System.Console.Write("Left ");
                 FindClickedAsset(MousePosition);
-
-                //System.Console.WriteLine($"Relative Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAsset.ToString()}");
-
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
-                // find out if click was on input/output pin (maybe return bool isClickedOnPinIO = ClickedLeft())
 
                 if ((MouseState == Defs.Mouse.Idle))
                 {
                     if (ClickedAsset is Element)
                     {
-                        if (ClickedAssetPin != null)
+                        if ((ClickedAssetPin != null) && (!((Element)ClickedAsset).IsInTray()))
                         {
                             SelectedAssetPin = ClickedAssetPin;
                             MouseState = Defs.Mouse.Select;
@@ -84,13 +80,14 @@ namespace LogicGates.Engine
                     {
                         MouseState = Defs.Mouse.Idle;
                     }
-                    else if (SelectedAssetPin.Type != ClickedAssetPin.Type && SelectedAssetPin.Element != ClickedAssetPin.Element)
+                    else if ((SelectedAssetPin.Type != ClickedAssetPin.Type) && (SelectedAssetPin.Element != ClickedAssetPin.Element) && (!((Element)ClickedAsset).IsInTray()))
                     {
                         var connection = new Connection(SelectedAssetPin, ClickedAssetPin);
                         foreach (var item in connection.WiresList)
                         {
                             Harness.GameCurrentLevel.AsstesList.Add(item);
                         }
+                        Harness.GameCurrentLevel.ConnectionsList.Add(connection);
                         Harness.RefreshOutput();
                         MouseState = Defs.Mouse.Idle;
                     }
