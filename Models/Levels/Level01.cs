@@ -23,7 +23,7 @@ namespace LogicGates.Models
             foreach (var gate in trayGatesList)
             {
                 gate.Position.Width = (Dimensions.Canvas.Width / 2) - (trayGatesList.Count * gate.Size.Width / 2) - ((trayGatesList.Count - 2) * 8) + (trayGatesList.IndexOf(gate) * (gate.Size.Width + Dimensions.Space.Width));
-                ElementsList.Add(gate);
+                GatesList.Add(gate);
             }
 
             var logicSourcesList = new List<Source>();
@@ -40,7 +40,7 @@ namespace LogicGates.Models
             foreach (var lamp in lampsList)
             {
                 lamp.Position.Height = (Dimensions.Canvas.Height / 2) - (lampsList.Count * lamp.Size.Height / 2) - (Dimensions.Element.Height / 4) + (lampsList.IndexOf(lamp) * lamp.Size.Height);
-                ElementsList.Add(lamp);
+                LampsList.Add(lamp);
             }
 
             var groundList = new List<Ground>();
@@ -52,6 +52,8 @@ namespace LogicGates.Models
             }
 
             AsstesList.AddRange(ElementsList);
+            AsstesList.AddRange(LampsList);
+            AsstesList.AddRange(GatesList);
 
             Harness.SaveGame();
         }
