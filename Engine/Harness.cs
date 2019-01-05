@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SDL2;
 using LogicGates.Common;
 using LogicGates.Models;
+using LogicGates.Models.Elements;
 
 namespace LogicGates.Engine
 {
@@ -71,8 +72,7 @@ namespace LogicGates.Engine
 
         public static void ReloadLevel()
         {
-            Type type = Harness.GameCurrentLevel.GetType();
-            Harness.GameCurrentLevel = (Level)Activator.CreateInstance(type);
+            Harness.GameCurrentLevel = (Level)Activator.CreateInstance(Harness.GameCurrentLevel.GetType());
             Harness.RefreshOutput();
         }
 
@@ -84,7 +84,77 @@ namespace LogicGates.Engine
 
         public static void SimulateLevel()
         {
-            System.Console.WriteLine("simulation...");
+            foreach (var element in GameCurrentLevel.ElementsList)
+            {
+                System.Console.WriteLine($"element: {element.ToString()}");
+                foreach (var pin in element.PinsList)
+                {
+                    if (pin.isConnected == false)
+                    {
+                        System.Console.WriteLine("Not all pins are connected");
+                        return;
+                    }
+                }
+
+                foreach (var pin in element.PinsList)
+                {
+                    if ((pin.ParentConnection != null) && (pin.ParentConnection.State == Defs.Connection.HighImpedance) && !(pin.ParentConnection.isConnectedWithGateOutput()))
+                    {
+                        System.Console.WriteLine($"Pin A: {pin.ParentConnection.PinA.Element.ToString()} Pin B: {pin.ParentConnection.PinB.Element.ToString()}");
+                        pin.ParentConnection.State = (Defs.Connection)element.State;
+                        System.Console.WriteLine($"> Set connection state to: {pin.ParentConnection.State}");
+                    }
+                }
+            }
+
+            while (Harness.GameCurrentLevel.ConnectionsList.Find(x => (x.State == Defs.Connection.HighImpedance)) != null)
+            {
+                foreach (var gate in GameCurrentLevel.GatesList)
+                {
+                    System.Console.WriteLine($"element: {gate.ToString()}");
+                    if (!(gate.IsInTray()))
+                    {
+                        foreach (var pin in gate.PinsList)
+                        {
+                            if (pin.isConnected == false)
+                            {
+                                System.Console.WriteLine("Not all pins are connected");
+                                return;
+                            }
+                        }
+
+                        gate.ComputeOutput();
+                    }
+                }
+            }
+
+            foreach(var lamp in Harness.GameCurrentLevel.LampsList)
+            {
+                int potential = 0;
+                foreach(var pin in lamp.PinsList)
+                {
+                    potential += (int)pin.ParentConnection.State;
+                }
+
+                if (potential == 1)
+                    lamp.ChangeStateToHigh();
+            }
+
+            bool isFinished = false;
+            foreach(var lamp in Harness.GameCurrentLevel.LampsList)
+            {
+                if (lamp.CurrentTexture == 1)
+                    isFinished = true;
+                else
+                    isFinished = false;
+            }
+
+            if (isFinished)
+                System.Console.WriteLine("Level completed");
+            else
+                System.Console.WriteLine("Level not completed yet");
+
+            System.Console.WriteLine("All pins are connected");
         }
 
         static string Base64Encode(string plainText)
