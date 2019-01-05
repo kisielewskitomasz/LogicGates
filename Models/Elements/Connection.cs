@@ -10,7 +10,7 @@ namespace LogicGates.Models.Elements
         public List<Wire> WiresList = new List<Wire>();
         public Pin PinA { get; set; } = null;
         public Pin PinB { get; set; } = null;
-        public CS ConnectionState { get; set; } = CS.HighImpedance;
+        public Defs.Connection State { get; set; } = Defs.Connection.HighImpedance;
 
         public Connection(Pin a, Pin b)
         {
@@ -35,19 +35,19 @@ namespace LogicGates.Models.Elements
                 if (direction.Height > 0)
                 {
                     System.Console.WriteLine(">--- 1 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Max(posA.Height, posB.Height)), this);
-                    vWire = new WireVertical(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Max(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
+                    vWire = new Wire(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Vertical);
                 }
                 else if (direction.Height < 0)
                 {
                     System.Console.WriteLine(">--- 2 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
-                    vWire = new WireVertical(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
+                    vWire = new Wire(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Vertical);
                 }
                 else
                 {
                     System.Console.WriteLine(">--- 6 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
                 }
             }
             else if (direction.Width < 0)
@@ -55,25 +55,25 @@ namespace LogicGates.Models.Elements
                 if (direction.Height > 0)
                 {
                     System.Console.WriteLine(">--- 3 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Max(posA.Height, posB.Height)), this);
-                    vWire = new WireVertical(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Max(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Max(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
+                    vWire = new Wire(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Max(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Vertical);
                 }
                 else if (direction.Height < 0)
                 {
                     System.Console.WriteLine(">--- 4 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
-                    vWire = new WireVertical(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Max(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
+                    vWire = new Wire(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Max(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Vertical);
                 }
                 else
                 {
                     System.Console.WriteLine(">--- 5 ---<");
-                    hWire = new WireHorizontal(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                    hWire = new Wire(new Size(length.Width + Wire.Thickness, Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Horizontal);
                 }
             }
             else
             {
                 System.Console.WriteLine(">--- 7 ---<");
-                vWire = new WireVertical(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this);
+                vWire = new Wire(new Size(Wire.Thickness, length.Height + Wire.Thickness), new Position(Math.Min(posA.Width, posB.Width), Math.Min(posA.Height, posB.Height)), this, Defs.Wire.Vertical);
             }
 
             if(hWire != null)

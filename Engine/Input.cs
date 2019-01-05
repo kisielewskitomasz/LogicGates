@@ -11,7 +11,7 @@ namespace LogicGates.Engine
     public class Input
     {
         static bool _quit = false;
-        static MS MouseState { get; set; } = 0;
+        static Defs.Mouse MouseState { get; set; } = 0;
 
         static Asset ClickedAsset { get; set; } = null;
         static Pin ClickedAssetPin { get; set; } = null;
@@ -59,32 +59,32 @@ namespace LogicGates.Engine
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
                 // find out if click was on input/output pin (maybe return bool isClickedOnPinIO = ClickedLeft())
 
-                if ((MouseState == MS.Idle))
+                if ((MouseState == Defs.Mouse.Idle))
                 {
                     if (ClickedAsset is Element)
                     {
                         if (ClickedAssetPin != null)
                         {
                             SelectedAssetPin = ClickedAssetPin;
-                            MouseState = MS.Select;
+                            MouseState = Defs.Mouse.Select;
                         }
                         else if (ClickedAsset.IsMovable)
                         {
-                            MouseState = MS.Move;
+                            MouseState = Defs.Mouse.Move;
                         }
                     }
                 }
-                else if (MouseState == MS.Move)
+                else if (MouseState == Defs.Mouse.Move)
                 {
-                    MouseState = MS.Idle;
+                    MouseState = Defs.Mouse.Idle;
                 }
-                else if (MouseState == MS.Select)
+                else if (MouseState == Defs.Mouse.Select)
                 {
                     if (ClickedAssetPin == null)
                     {
-                        MouseState = MS.Idle;
+                        MouseState = Defs.Mouse.Idle;
                     }
-                    else if (SelectedAssetPin.Type != ClickedAssetPin.Type)
+                    else if (SelectedAssetPin.Type != ClickedAssetPin.Type && SelectedAssetPin.Element != ClickedAssetPin.Element)
                     {
                         var connection = new Connection(SelectedAssetPin, ClickedAssetPin);
                         foreach (var item in connection.WiresList)
@@ -92,13 +92,13 @@ namespace LogicGates.Engine
                             Harness.GameCurrentLevel.AsstesList.Add(item);
                         }
                         Harness.RefreshOutput();
-                        MouseState = MS.Idle;
+                        MouseState = Defs.Mouse.Idle;
                     }
                     else
                     {
                         ClickedAssetPin = null;
                         SelectedAssetPin = null;
-                        MouseState = MS.Idle;
+                        MouseState = Defs.Mouse.Idle;
                     }
                 }
             }
@@ -107,13 +107,13 @@ namespace LogicGates.Engine
                 System.Console.Write("Right ");
                 FindClickedAsset(MousePosition);
                 ClickedAsset.ClickedRight(MousePosition, RelativeMousePosition);
-                MouseState = MS.Idle;
+                MouseState = Defs.Mouse.Idle;
             }
         }
 
         static void OnSDL_MOUSEMOTION()
         {
-            if (MouseState == MS.Move)
+            if (MouseState == Defs.Mouse.Move)
             {
                 SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
                 ClickedAsset.Position = MousePosition - RelativeMousePosition;

@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using LogicGates.Common;
+using LogicGates.Engine;
+
+namespace LogicGates.Models.Elements
+{
+    public class Source : Element
+    {
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(66, 33, Defs.Pin.Out) };
+        protected override string[] FileNames { get; set; } = { "element_logic0.png", "element_logic1.png" };
+
+        public Source() : base()
+        {
+        }
+
+        public Source(Size size, Defs.Element signal) : base(size)
+        {
+            State = (int)signal;
+            CurrentTexture = (int)State;
+        }
+
+        public Source(Position position, Defs.Element signal) : base(position)
+        {
+            State = (int)signal;
+            CurrentTexture = (int)State;
+        }
+
+        public Source(Size size, Position position, Defs.Element signal) : base(size, position)
+        {
+            State = (int)signal;
+            CurrentTexture = (int)State;
+        }
+    }
+}

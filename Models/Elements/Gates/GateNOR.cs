@@ -5,7 +5,7 @@ namespace LogicGates.Models.Elements
 {
     public class GateNOR : Gate
     {
-        protected override string FileName { get; set; } = "gate_nor.png";
+        protected override string[] FileNames { get; set; } = { "gate_nor.png" };
 
         public GateNOR() : base()
         {

@@ -8,7 +8,7 @@ namespace LogicGates.Models.Images
     public class Reload : Asset
     {
         public override Size Size { get; protected set; } = new Size(72, 72);
-        protected override string FileName { get; set; } = "image_reload.png";
+        protected override string[] FileNames { get; set; } = { "image_reload.png" };
 
         public Reload() : base()
         {

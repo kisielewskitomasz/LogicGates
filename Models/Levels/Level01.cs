@@ -26,9 +26,9 @@ namespace LogicGates.Models
                 AsstesList.Add(gate);
             }
 
-            var logicSourcesList = new List<Logic>();
-            logicSourcesList.Add(new LogicOne(new Position(18 + 72, 0)));
-            logicSourcesList.Add(new LogicZero(new Position(18 + 72, 0)));
+            var logicSourcesList = new List<Source>();
+            logicSourcesList.Add(new Source(new Position(18 + 72, 0), Defs.Element.High));
+            logicSourcesList.Add(new Source(new Position(18 + 72, 0), Defs.Element.Low));
             foreach (var source in logicSourcesList)
             {
                 source.Position.Height = (Canvas.Height / 2) - (logicSourcesList.Count * source.Size.Height / 2) - 18 + (logicSourcesList.IndexOf(source) * source.Size.Height);
@@ -37,7 +37,7 @@ namespace LogicGates.Models
 
             var lampsList = new List<Lamp>();
             // lampsList.Add(new LampOn(new Position(Canvas.Width - (18 + 72 * 4), 0)));
-            lampsList.Add(new LampOff(new Position(Canvas.Width - (18 + 72 * 4), 0)));
+            lampsList.Add(new Lamp(new Position(Canvas.Width - (18 + 72 * 4), 0), Defs.Element.Low));
             foreach (var lamp in lampsList)
             {
                 lamp.Position.Height = (Canvas.Height / 2) - (lampsList.Count * lamp.Size.Height / 2) - 18 + (lampsList.IndexOf(lamp) * lamp.Size.Height);
