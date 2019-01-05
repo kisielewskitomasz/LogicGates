@@ -43,5 +43,12 @@ namespace LogicGates.Models.Elements
                 PinsList[i].Element = this;
             }
         }
+
+        public bool IsInTray()
+        {
+            if (Position.Height > Dimensions.Tray.Height)
+                return false;
+            return true;
+        }
     }
 }
