@@ -62,6 +62,18 @@ namespace LogicGates.Models
             CurrentTexture = (CurrentTexture + 1) % 2;
             Harness.RefreshOutput();
         }
+
+        public virtual void ChangeStateToHigh()
+        {
+            CurrentTexture = 1;
+            Harness.RefreshOutput();
+        }
+
+        public virtual void ChangeStateToLow()
+        {
+            CurrentTexture = 0;
+            Harness.RefreshOutput();
+        }
         public virtual void Render() =>
             Drawer.RenderTexture(TexturesClip[CurrentTexture], Output.Renderer, Position.Width, Position.Height, Size.Width, Size.Height);
 
