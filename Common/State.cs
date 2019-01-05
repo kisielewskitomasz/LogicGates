@@ -1,6 +1,9 @@
 namespace LogicGates.Common
 {
-    public enum CS
+    /// <summary>
+    /// Enum used to define Connection states
+    /// </summary>
+    public enum State
     {
         HighImpedance = -1,
         Low = 0,
