@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace LogicGates.Common
 {
+    /// <summary>
+    /// Class used to resolve relative paths
+    /// </summary>
     public static class FilePath
     {
         static string _basePath = null;
@@ -20,6 +23,10 @@ namespace LogicGates.Common
             }
         }
 
+        /// <summary>
+        /// Gets relative path to file
+        /// </summary>
+        /// <param name="fileName">File name</param>
         public static string Get(string fileName)
         {
             var path = Path.Combine(BasePath, fileName);
@@ -32,6 +39,10 @@ namespace LogicGates.Common
             return path;
         }
 
+        /// <summary>
+        /// Gets relative path to non existing file
+        /// </summary>
+        /// <param name="fileName">File name</param>
         public static string GetNotExisting(string fileName)
         {
             return Path.Combine(BasePath, fileName); ;

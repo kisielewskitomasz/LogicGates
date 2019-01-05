@@ -1,5 +1,8 @@
 namespace LogicGates.Common
 {
+    /// <summary>
+    /// Enum used to define Pin type
+    /// </summary>
     public enum IO
     {
         Null = -1,

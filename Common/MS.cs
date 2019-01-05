@@ -1,5 +1,8 @@
 namespace LogicGates.Common
 {
+    /// <summary>
+    /// Enum used to define Mouse state
+    /// </summary>
     public enum MS
     {
         Null = -1,

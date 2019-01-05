@@ -1,5 +1,8 @@
 namespace LogicGates.Common
 {
+    /// <summary>
+    /// Class used to define Point on Canvas
+    /// </summary>
     public class Point
     {
         public int Width;
