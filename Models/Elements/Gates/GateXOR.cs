@@ -22,5 +22,37 @@ namespace LogicGates.Models.Elements
         public GateXOR(Position position) : base(position)
         {
         }
+        public override void ComputeOutput()
+        {
+            Defs.Connection outputState = Defs.Connection.HighImpedance;
+
+            foreach (var pin in PinsList)
+            {
+                if (pin.Type == Defs.Pin.In)
+                {
+                    if (pin.ParentConnection.State != Defs.Connection.HighImpedance)
+                    {
+                        if (outputState == Defs.Connection.HighImpedance)
+                        {
+                            outputState = pin.ParentConnection.State;
+                        }
+                        else
+                        {
+                            outputState ^= pin.ParentConnection.State;
+                        }
+                    }
+                    else
+                        outputState = Defs.Connection.HighImpedance;
+                }
+            }
+
+            foreach (var pin in PinsList)
+            {
+                if (pin.Type == Defs.Pin.Out)
+                {
+                    pin.ParentConnection.State = outputState;
+                }
+            }
+        }
     }
 }

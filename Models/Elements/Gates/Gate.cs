@@ -26,5 +26,12 @@ namespace LogicGates.Models.Elements
         public Gate(Size size, Position position) : base(size, position)
         {
         }
+
+        public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
+        {
+            System.Console.WriteLine($"Is this gate in: {IsInTray()}");
+        }
+
+        public abstract void ComputeOutput();
     }
 }

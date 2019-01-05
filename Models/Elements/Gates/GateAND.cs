@@ -23,5 +23,29 @@ namespace LogicGates.Models.Elements
         public GateAND(Size size, Position position) : base(size, position)
         {
         }
+
+        public override void ComputeOutput()
+        {
+            Defs.Connection outputState = Defs.Connection.High;
+
+            foreach (var pin in PinsList)
+            {
+                if (pin.Type == Defs.Pin.In)
+                {
+                    if (pin.ParentConnection.State != Defs.Connection.HighImpedance)
+                        outputState &= pin.ParentConnection.State;
+                    else
+                        outputState = Defs.Connection.HighImpedance;
+                }
+            }
+
+            foreach (var pin in PinsList)
+            {
+                if (pin.Type == Defs.Pin.Out)
+                {
+                    pin.ParentConnection.State = outputState;
+                }
+            }
+        }
     }
 }
