@@ -21,6 +21,7 @@ namespace LogicGates.Models.Elements
             PinA.Element.IsMovable = false;
             PinB.Element.IsMovable = false;
             PinA.ParentConnection = this;
+            PinB.ParentConnection = this;
 
             Position posA = PinA.Element.Position + PinA.Position;
             Position posB = PinB.Element.Position + PinB.Position;
@@ -80,6 +81,13 @@ namespace LogicGates.Models.Elements
                 WiresList.Add(hWire);
             if(vWire != null)
                 WiresList.Add(vWire);
+        }
+
+        public bool isConnectedWithGateOutput()
+        {
+            if (((PinA.Element is Gate) && (PinA.Type == Defs.Pin.Out)) || ((PinB.Element is Gate) && (PinB.Type == Defs.Pin.Out)))
+                return true;
+            return false;
         }
     }
 }
