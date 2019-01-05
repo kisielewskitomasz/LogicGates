@@ -44,6 +44,10 @@ namespace LogicGates.Models.Elements
             CurrentTexture = (int)Type;
         }
 
+        public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
+        {
+            System.Console.WriteLine($"Set connection state to: {ParentLine.State}");
+        }
         public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
         {
             foreach(var wire in ParentLine.WiresList)
@@ -57,14 +61,27 @@ namespace LogicGates.Models.Elements
 
             ParentLine.WiresList.Clear();
 
+            Harness.GameCurrentLevel.ConnectionsList.Remove(ParentLine);
+
+            bool unlockA = true;
+            bool unlockB = true;
             foreach(var pin in ParentLine.PinA.Element.PinsList)
             {
                 if (pin.isConnected == true)
-                    return;
+                    unlockA = false;
             }
 
-            ParentLine.PinA.Element.IsMovable = true;
-            ParentLine.PinB.Element.IsMovable = true;
+            foreach(var pin in ParentLine.PinB.Element.PinsList)
+            {
+                if (pin.isConnected == true)
+                    unlockB = false;
+            }
+
+            if (unlockA)
+                ParentLine.PinA.Element.IsMovable = true;
+
+            if (unlockB)
+                ParentLine.PinB.Element.IsMovable = true;
         }
     }
 }
