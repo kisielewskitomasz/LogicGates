@@ -10,9 +10,7 @@ namespace LogicGates.Models
     {
         public Level99()
         {
-            var splashSize = new Size(384, 384);
-            var splashPosition = new Position((Canvas.Width / 2) - (splashSize.Width / 2), (Canvas.Height / 2) - (splashSize.Height / 2));
-            AsstesList.Add(new Images.Splash(splashSize, splashPosition));
+            AsstesList.Add(new Images.Splash(new Size(Dimensions.Banner.Width, Dimensions.Banner.Height), new Position((Dimensions.Canvas.Width / 2) - (Dimensions.Banner.Width / 2), (Dimensions.Canvas.Height / 2) - (Dimensions.Banner.Height / 2))));
         }
     }
 }

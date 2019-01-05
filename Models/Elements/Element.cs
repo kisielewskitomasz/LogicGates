@@ -8,7 +8,7 @@ namespace LogicGates.Models.Elements
 {
     public abstract class Element : Asset
     {
-        public override Size Size { get; protected set; } = new Size(72, 72);
+        public override Size Size { get; protected set; } = new Size(Dimensions.Element.Width, Dimensions.Element.Height);
         public virtual int State { get; protected set; } = (int)Defs.Element.Low;
         public abstract List<Pin> PinsList { get; protected set; }
 

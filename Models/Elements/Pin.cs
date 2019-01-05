@@ -4,8 +4,8 @@ namespace LogicGates.Models.Elements
 {
     public class Pin
     {
-        public static int Width = 6;
-        public static int Height = 6;
+        public static int Width = Dimensions.Element.Pin.Width;
+        public static int Height = Dimensions.Element.Pin.Height;
         public Element Element = null;
         public Defs.Pin Type { get; set; } = Defs.Pin.Null;
         public Size Size { get; protected set; } = new Size(Width, Height);

@@ -8,7 +8,7 @@ namespace LogicGates.Models.Images
 {
     public class Splash : Asset
     {
-        public override Size Size { get; protected set; } = new Size(384, 384);
+        public override Size Size { get; protected set; } = new Size(Dimensions.Banner.Width, Dimensions.Banner.Height);
         protected override string[] FileNames { get; set; } = { "image_splash.png" };
 
         public Splash(string fileName) : base()
@@ -29,9 +29,11 @@ namespace LogicGates.Models.Images
 
         public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
         {
-            if ((mousePosition.Width >= (Position.Width + 32)) && (mousePosition.Width <= (Position.Width + Size.Width - 32)))
+            Position relativeMenuMousePosition = relativeMousePosition - new Position(Dimensions.Banner.Space.Width, Dimensions.Banner.Space.Height);
+            System.Console.WriteLine(relativeMenuMousePosition.Height);
+            if ((relativeMenuMousePosition.Width >= 0) && (relativeMenuMousePosition.Width <= Dimensions.Banner.Button.Width))
             {
-                if ((mousePosition.Height >= Position.Height + 32 + (64 * 4)) && (mousePosition.Height <= (Position.Height + 32 + (64 * 5))))
+                if ((relativeMenuMousePosition.Height >= Dimensions.Banner.Button.Height * 4) && (relativeMenuMousePosition.Height <= (Dimensions.Banner.Button.Height * 5)))
                     Back();
             }
         }

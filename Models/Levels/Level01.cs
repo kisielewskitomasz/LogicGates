@@ -13,7 +13,7 @@ namespace LogicGates.Models
         {
             AsstesList.Add(new Images.Tray());
 
-            AsstesList.Add(new Images.Reload(new Position(Canvas.Width - 72, 0)));
+            AsstesList.Add(new Images.Reload(new Position(Dimensions.Canvas.Width - Dimensions.Element.Width, 0)));
             AsstesList.Add(new Images.Simulate(new Position(0, 0)));
 
             var trayGatesList = new List<Gate>();
@@ -22,38 +22,36 @@ namespace LogicGates.Models
             trayGatesList.Add(new GateNOT(new Position(0, 0)));
             foreach (var gate in trayGatesList)
             {
-                gate.Position.Width = (Canvas.Width / 2) - (trayGatesList.Count * gate.Size.Width / 2) - ((trayGatesList.Count - 2) * 8) + (trayGatesList.IndexOf(gate) * (gate.Size.Width + 8));
-                AsstesList.Add(gate);
+                gate.Position.Width = (Dimensions.Canvas.Width / 2) - (trayGatesList.Count * gate.Size.Width / 2) - ((trayGatesList.Count - 2) * 8) + (trayGatesList.IndexOf(gate) * (gate.Size.Width + Dimensions.Space.Width));
+                ElementsList.Add(gate);
             }
 
             var logicSourcesList = new List<Source>();
-            logicSourcesList.Add(new Source(new Position(18 + 72, 0), Defs.Element.High));
-            logicSourcesList.Add(new Source(new Position(18 + 72, 0), Defs.Element.Low));
+            logicSourcesList.Add(new Source(new Position((Dimensions.Element.Width / 4) + Dimensions.Element.Width, 0), Defs.Element.High));
+            logicSourcesList.Add(new Source(new Position((Dimensions.Element.Width / 4) + Dimensions.Element.Width, 0), Defs.Element.Low));
             foreach (var source in logicSourcesList)
             {
-                source.Position.Height = (Canvas.Height / 2) - (logicSourcesList.Count * source.Size.Height / 2) - 18 + (logicSourcesList.IndexOf(source) * source.Size.Height);
-                AsstesList.Add(source);
+                source.Position.Height = (Dimensions.Canvas.Height / 2) - (logicSourcesList.Count * source.Size.Height / 2) - (Dimensions.Element.Height / 4) + (logicSourcesList.IndexOf(source) * source.Size.Height);
+                ElementsList.Add(source);
             }
 
             var lampsList = new List<Lamp>();
-            // lampsList.Add(new LampOn(new Position(Canvas.Width - (18 + 72 * 4), 0)));
-            lampsList.Add(new Lamp(new Position(Canvas.Width - (18 + 72 * 4), 0), Defs.Element.Low));
+            lampsList.Add(new Lamp(new Position(Dimensions.Canvas.Width - ((Dimensions.Element.Width / 4) + Dimensions.Element.Width * 4), 0), Defs.Element.Low));
             foreach (var lamp in lampsList)
             {
-                lamp.Position.Height = (Canvas.Height / 2) - (lampsList.Count * lamp.Size.Height / 2) - 18 + (lampsList.IndexOf(lamp) * lamp.Size.Height);
-                AsstesList.Add(lamp);
+                lamp.Position.Height = (Dimensions.Canvas.Height / 2) - (lampsList.Count * lamp.Size.Height / 2) - (Dimensions.Element.Height / 4) + (lampsList.IndexOf(lamp) * lamp.Size.Height);
+                ElementsList.Add(lamp);
             }
 
             var groundList = new List<Ground>();
-            // groundList.Add(new Ground(new Position(Canvas.Width - (18 + 72 * 2), 0)));
-            groundList.Add(new Ground(new Position(Canvas.Width - (18 + 72 * 2), 0)));
+            groundList.Add(new Ground(new Position(Dimensions.Canvas.Width - ((Dimensions.Element.Width / 4) + Dimensions.Element.Width * 2), 0)));
             foreach (var ground in groundList)
             {
-                ground.Position.Height = (Canvas.Height / 2) - (groundList.Count * ground.Size.Height / 2) - 18 + (groundList.IndexOf(ground) * ground.Size.Height);
-                AsstesList.Add(ground);
+                ground.Position.Height = (Dimensions.Canvas.Height / 2) - (groundList.Count * ground.Size.Height / 2) - (Dimensions.Element.Height / 4) + (groundList.IndexOf(ground) * ground.Size.Height);
+                ElementsList.Add(ground);
             }
 
-
+            AsstesList.AddRange(ElementsList);
 
             Harness.SaveGame();
         }

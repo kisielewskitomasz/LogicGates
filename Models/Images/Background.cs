@@ -7,7 +7,7 @@ namespace LogicGates.Models.Images
 {
     public class Background : Asset
     {
-        public override Size Size { get; protected set; } = new Size(Canvas.Width, Canvas.Height);
+        public override Size Size { get; protected set; } = new Size(Dimensions.Canvas.Width, Dimensions.Canvas.Height);
         protected override string[] FileNames { get; set; } = { "image_background.png" };
 
         public Background() : base()

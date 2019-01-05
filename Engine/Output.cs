@@ -27,7 +27,7 @@ namespace LogicGates.Engine
             }
 
             Window = SDL.SDL_CreateWindow("LogicGates", SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED,
-                                            Canvas.Width, Canvas.Height, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+                                            Dimensions.Canvas.Width, Dimensions.Canvas.Height, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
             if (Window == IntPtr.Zero)
                 Logger.Fatal(nameof(SDL.SDL_CreateWindow),

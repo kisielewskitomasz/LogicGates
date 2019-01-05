@@ -10,9 +10,7 @@ namespace LogicGates.Models
     {
         public Level00()
         {
-            var menuSize = new Size(384, 384);
-            var menuPosition = new Position((Canvas.Width / 2) - (menuSize.Width / 2), (Canvas.Height / 2) - (menuSize.Height / 2));
-            AsstesList.Add(new Images.Menu(menuSize, menuPosition));
+            AsstesList.Add(new Images.Menu(new Size(Dimensions.Banner.Width, Dimensions.Banner.Height), new Position((Dimensions.Canvas.Width / 2) - (Dimensions.Banner.Width / 2), (Dimensions.Canvas.Height / 2) - (Dimensions.Banner.Height / 2))));
         }
     }
 }

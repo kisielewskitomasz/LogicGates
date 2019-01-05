@@ -6,7 +6,7 @@ namespace LogicGates.Models.Elements
 {
     public class Wire : Asset
     {
-        public static int Thickness = 6;
+        public static int Thickness = Dimensions.Wire.Thickness;
         protected override string[] FileNames { get; set; } = { "element_wire_horizontal.png", "element_wire_vertical.png" };
         public override Size Size { get; protected set; }
         public Defs.Wire Type { get; protected set; }

@@ -4,7 +4,7 @@ namespace LogicGates.Models.Images
 {
     public class Tray : Asset
     {
-        public override Size Size { get; protected set; } = new Size(Canvas.Width, 72);
+        public override Size Size { get; protected set; } = new Size(Dimensions.Tray.Width, Dimensions.Tray.Height);
         protected override string[] FileNames { get; set; } = { "image_tray.png" };
 
         public Tray() : base()

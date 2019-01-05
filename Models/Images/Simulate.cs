@@ -7,7 +7,7 @@ namespace LogicGates.Models.Images
 {
     public class Simulate : Asset
     {
-        public override Size Size { get; protected set; } = new Size(72, 72);
+        public override Size Size { get; protected set; } = new Size(Dimensions.Element.Width, Dimensions.Element.Width);
         protected override string[] FileNames { get; set; } = { "image_start.png" };
 
         public Simulate() : base()

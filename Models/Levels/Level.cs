@@ -8,12 +8,13 @@ namespace LogicGates.Models
 {
     public abstract class Level
     {
-        public List<Asset> AsstesList { get; private set; } = null;
+        public List<Asset> AsstesList { get; private set; } = new List<Asset>();
+        public List<Elements.Element> ElementsList { get; private set; } = new List<Elements.Element>();
 
         public Level()
         {
-            AsstesList = new List<Asset>();
             AsstesList.Add(new Images.Background());
+
             SDL.SDL_RenderClear(Output.Renderer);
         }
     }

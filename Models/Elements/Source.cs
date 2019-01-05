@@ -7,7 +7,7 @@ namespace LogicGates.Models.Elements
 {
     public class Source : Element
     {
-        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(66, 33, Defs.Pin.Out) };
+        public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(Dimensions.Element.Pin.Position.Out.Width, Dimensions.Element.Pin.Position.Out.Height, Defs.Pin.Out) };
         protected override string[] FileNames { get; set; } = { "element_logic0.png", "element_logic1.png" };
 
         public Source() : base()
