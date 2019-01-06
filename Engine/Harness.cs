@@ -132,6 +132,11 @@ namespace LogicGates.Engine
                     if ((pin.ParentConnection != null) && (pin.ParentConnection.State == Defs.Connection.HighImpedance) && !(pin.ParentConnection.isConnectedWithGateOutput()))
                     {
                         pin.ParentConnection.State = (Defs.Connection)element.CurrentTexture;
+                        foreach(var wire in pin.ParentConnection.WiresList)
+                        {
+                            wire.CurrentTexture = (int)wire.Type + (2 * ((int)pin.ParentConnection.State + 1));
+                            Engine.Harness.RefreshOutput();
+                        }
                     }
                 }
             }

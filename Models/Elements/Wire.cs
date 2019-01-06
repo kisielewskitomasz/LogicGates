@@ -11,7 +11,9 @@ namespace LogicGates.Models.Elements
     {
         /// <summary>Keeps Wire thickness</summary>
         public static int Thickness = Dimensions.Wire.Thickness;
-        protected override string[] FileNames { get; set; } = { "element_wire_horizontal.png", "element_wire_vertical.png" };
+        protected override string[] FileNames { get; set; } = { "element_wire_horizontal.png", "element_wire_vertical.png",
+         "element_wire_horizontal_low.png", "element_wire_vertical_low.png",
+          "element_wire_horizontal_high.png", "element_wire_vertical_high.png" };
         public override Size Size { get; protected set; }
         /// <summary>Keeps Wire type</summary>
         public Defs.Wire Type { get; protected set; }
@@ -78,10 +80,10 @@ namespace LogicGates.Models.Elements
                     unlockB = false;
             }
 
-            if (unlockA)
+            if ((unlockA) && (ParentLine.PinA.Element is Gate))
                 ParentLine.PinA.Element.IsMovable = true;
 
-            if (unlockB)
+            if ((unlockB) && (ParentLine.PinB.Element is Gate))
                 ParentLine.PinB.Element.IsMovable = true;
         }
     }
