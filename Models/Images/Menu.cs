@@ -44,8 +44,16 @@ namespace LogicGates.Models.Images
             }
         }
 
-        void ContiuneButton() =>
-            Harness.LoadGame();
+        void ContiuneButton()
+        {
+            if(Harness.IsLoaded)
+            {
+                Harness.GameCurrentLevel.AsstesList.Remove(this);
+                Harness.RefreshOutput();
+            }
+            else
+                Harness.LoadGame();
+        }
 
         void ResetButton() =>
             Harness.ResetGame();

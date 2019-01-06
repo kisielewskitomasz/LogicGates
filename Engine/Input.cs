@@ -47,6 +47,14 @@ namespace LogicGates.Engine
                 case SDL.SDL_EventType.SDL_QUIT:
                     OnSDL_QUIT();
                     break;
+                case SDL.SDL_EventType.SDL_KEYDOWN:
+                    switch (e.key.keysym.sym)
+                    {
+                        case SDL2.SDL.SDL_Keycode.SDLK_ESCAPE:
+                            OnSDL_ESCDOWN();
+                            break;
+                    }
+                    break;
                 case SDL.SDL_EventType.SDL_MOUSEBUTTONDOWN:
                     OnSDL_MOUSEBUTTONDOWN();
                     break;
@@ -117,6 +125,20 @@ namespace LogicGates.Engine
                 ClickedAsset.ClickedRight(MousePosition, RelativeMousePosition);
                 MouseState = Defs.Mouse.Idle;
             }
+        }
+
+        /// <summary>
+        /// Handler for ESC type
+        /// </summary>
+        static void OnSDL_ESCDOWN()
+        {
+            if (!(Harness.GameCurrentLevel is Level00))
+            {
+                Harness.GameCurrentLevel.AsstesList.Add(new Models.Images.Menu(new Size(Dimensions.Banner.Width, Dimensions.Banner.Height), new Position((Dimensions.Canvas.Width / 2) - (Dimensions.Banner.Width / 2), (Dimensions.Canvas.Height / 2) - (Dimensions.Banner.Height / 2))));
+                Harness.RefreshOutput();
+            }
+            else
+                Harness.QuitGame();
         }
 
         /// <summary>
