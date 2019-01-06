@@ -112,6 +112,7 @@ namespace LogicGates.Engine
         public static void ResetGame()
         {
             Harness.GameCurrentLevel = new Level01();
+            Harness.SaveGame();
             Harness.RefreshOutput();
         }
 
