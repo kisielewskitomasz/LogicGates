@@ -6,24 +6,24 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Images
 {
-    public class Splash : Asset
+    public class Completed : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Banner.Width, Dimensions.Banner.Height);
-        protected override string[] FileNames { get; set; } = { "image_splash.png" };
+        protected override string[] FileNames { get; set; } = { "image_completed.png" };
 
-        public Splash(string fileName) : base()
+        public Completed(string fileName) : base()
         {
         }
 
-        public Splash(Size size) : base(size)
+        public Completed(Size size) : base(size)
         {
         }
 
-        public Splash(Position position) : base(position)
+        public Completed(Position position) : base(position)
         {
         }
 
-        public Splash(Size size, Position position) : base(size, position)
+        public Completed(Size size, Position position) : base(size, position)
         {
         }
 
@@ -34,13 +34,14 @@ namespace LogicGates.Models.Images
             if ((relativeMenuMousePosition.Width >= 0) && (relativeMenuMousePosition.Width <= Dimensions.Banner.Button.Width))
             {
                 if ((relativeMenuMousePosition.Height >= Dimensions.Banner.Button.Height * 4) && (relativeMenuMousePosition.Height <= (Dimensions.Banner.Button.Height * 5)))
-                    Back();
+                    Next();
             }
         }
 
-        void Back()
+        void Next()
         {
-            Harness.GameCurrentLevel = new Level00();
+            Harness.GameCurrentLevel.AsstesList.Remove(this);
+            Harness.NextLevel();
             Harness.RefreshOutput();
         }
     }
