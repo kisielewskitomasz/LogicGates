@@ -42,13 +42,7 @@ namespace LogicGates.Models.Elements
                         outputState = Defs.Connection.HighImpedance;
                 }
                 else
-                {
-                    if(outputState == Defs.Connection.High)
-                        outputState = Defs.Connection.Low;
-                    else if (outputState == Defs.Connection.Low)
-                        outputState = Defs.Connection.High;
-                    pin.ParentConnection.State = outputState;
-                }
+                    SetOutput(NegateOutput(outputState));
             }
         }
     }

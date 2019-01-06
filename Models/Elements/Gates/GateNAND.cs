@@ -41,18 +41,7 @@ namespace LogicGates.Models.Elements
                 }
             }
 
-            if (outputState == Defs.Connection.High)
-                outputState = Defs.Connection.Low;
-            else if (outputState == Defs.Connection.Low)
-                outputState = Defs.Connection.High;
-
-            foreach (var pin in PinsList)
-            {
-                if (pin.Type == Defs.Pin.Out)
-                {
-                    pin.ParentConnection.State = outputState;
-                }
-            }
+            SetOutput(NegateOutput(outputState));
         }
     }
 }

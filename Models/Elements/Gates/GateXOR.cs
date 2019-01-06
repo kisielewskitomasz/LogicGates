@@ -49,13 +49,7 @@ namespace LogicGates.Models.Elements
                 }
             }
 
-            foreach (var pin in PinsList)
-            {
-                if (pin.Type == Defs.Pin.Out)
-                {
-                    pin.ParentConnection.State = outputState;
-                }
-            }
+            SetOutput(outputState);
         }
     }
 }
