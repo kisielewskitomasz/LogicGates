@@ -64,7 +64,6 @@ namespace LogicGates.Engine
             var clickedButton = SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
             if (clickedButton == SDL.SDL_BUTTON(SDL.SDL_BUTTON_LEFT))
             {
-                System.Console.Write("Left ");
                 FindClickedAsset(MousePosition);
                 ClickedAsset.ClickedLeft(MousePosition, RelativeMousePosition);
 
@@ -114,7 +113,6 @@ namespace LogicGates.Engine
             }
             else if (clickedButton == SDL.SDL_BUTTON(SDL.SDL_BUTTON_RIGHT))
             {
-                System.Console.Write("Right ");
                 FindClickedAsset(MousePosition);
                 ClickedAsset.ClickedRight(MousePosition, RelativeMousePosition);
                 MouseState = Defs.Mouse.Idle;
@@ -155,7 +153,6 @@ namespace LogicGates.Engine
                 if ((mousePosition.Width >= asset.Position.Width) && (mousePosition.Width <= (asset.Position.Width + asset.Size.Width)) &&
                     (mousePosition.Height >= asset.Position.Height) && (mousePosition.Height <= (asset.Position.Height + asset.Size.Height)))
                 {
-                    System.Console.WriteLine($"Click at: {mousePosition.Width}, {mousePosition.Height} on: {asset.ToString()}");
                     ClickedAsset = asset;
                     RelativeMousePosition = (MousePosition - ClickedAsset.Position);
                     if (ClickedAsset is Element)
@@ -180,7 +177,6 @@ namespace LogicGates.Engine
                     if (!pin.isConnected)
                     {
                         ClickedAssetPin = pin;
-                        System.Console.WriteLine($"Click at: {RelativeMousePosition.Width}, {RelativeMousePosition.Height} on: {ClickedAssetPin.ToString()} - {ClickedAssetPin.Type.ToString()}");
                         return;
                     }
                 }

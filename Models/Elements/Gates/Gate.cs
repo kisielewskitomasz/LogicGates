@@ -36,7 +36,6 @@ namespace LogicGates.Models.Elements
 
         public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
         {
-            System.Console.WriteLine($"Is this gate in: {IsInTray()}");
         }
 
         /// <summary>

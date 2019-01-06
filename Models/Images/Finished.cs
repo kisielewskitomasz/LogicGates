@@ -33,7 +33,6 @@ namespace LogicGates.Models.Images
         public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
         {
             Position relativeMenuMousePosition = relativeMousePosition - new Position(Dimensions.Banner.Space.Width, Dimensions.Banner.Space.Height);
-            System.Console.WriteLine(relativeMenuMousePosition.Height);
             if ((relativeMenuMousePosition.Width >= 0) && (relativeMenuMousePosition.Width <= Dimensions.Banner.Button.Width))
             {
                 if ((relativeMenuMousePosition.Height >= Dimensions.Banner.Button.Height * 4) && (relativeMenuMousePosition.Height <= (Dimensions.Banner.Button.Height * 5)))

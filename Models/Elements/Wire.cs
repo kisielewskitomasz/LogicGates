@@ -49,10 +49,6 @@ namespace LogicGates.Models.Elements
             CurrentTexture = (int)Type;
         }
 
-        public override void ClickedLeft(Position mousePosition, Position relativeMousePosition)
-        {
-            System.Console.WriteLine($"Set connection state to: {ParentLine.State}");
-        }
         public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
         {
             foreach(var wire in ParentLine.WiresList)
