@@ -46,7 +46,7 @@ namespace LogicGates.Models.Images
 
         void ContiuneButton()
         {
-            if(Harness.IsLoaded)
+            if(!(Harness.GameCurrentLevel is Level00))
             {
                 Harness.GameCurrentLevel.AsstesList.Remove(this);
                 Harness.RefreshOutput();

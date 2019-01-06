@@ -16,7 +16,6 @@ namespace LogicGates.Engine
         public static Engine.Output EngineOutput { get; set; } = null;
         public static Engine.Input EngineInput { get; set; } = null;
         public static Models.Level GameCurrentLevel { get; set; } = null;
-        public static bool IsLoaded { get; set; } = false;
 
         public Harness()
         {
@@ -42,17 +41,17 @@ namespace LogicGates.Engine
                     if (lastLevel.Equals("LogicGates.Models.Level00"))
                     {
                         Harness.GameCurrentLevel = new Level01();
-                        Harness.IsLoaded = true;
                     }
                     else
                     {
                         Type type = Type.GetType(lastLevel, false);
                         if (type == null)
+                        {
                             Harness.GameCurrentLevel = new Level99();
+                        }
                         else
                         {
                             Harness.GameCurrentLevel = (Level)Activator.CreateInstance(type);
-                            Harness.IsLoaded = true;
                         }
                     }
                 }
