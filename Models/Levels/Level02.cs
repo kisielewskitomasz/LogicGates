@@ -7,9 +7,9 @@ using LogicGates.Models.Elements;
 
 namespace LogicGates.Models
 {
-    public class Level01 : Level
+    public class Level02 : Level
     {
-        public Level01()
+        public Level02()
         {
             AsstesList.Add(new Images.Tray());
 
@@ -17,7 +17,7 @@ namespace LogicGates.Models
             AsstesList.Add(new Images.Simulate(new Position(0, 0)));
 
             var trayGatesList = new List<Gate>();
-            trayGatesList.Add(new GateAND(new Position(0, 0)));
+            trayGatesList.Add(new GateXNOR(new Position(0, 0)));
             // trayGatesList.Add(new GateNAND(new Position(0, 0)));
             trayGatesList.Add(new GateNOT(new Position(0, 0)));
             foreach (var gate in trayGatesList)
