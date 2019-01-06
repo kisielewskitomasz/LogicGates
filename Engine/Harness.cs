@@ -76,6 +76,39 @@ namespace LogicGates.Engine
             Harness.RefreshOutput();
         }
 
+        public static void NextLevel()
+        {
+            string currentLevel = Harness.GameCurrentLevel.ToString();
+            string currentLevelNumber = currentLevel.Substring(currentLevel.Length - 2);
+            int currentLevelInt = -1;
+            string nextLevelNumber = "";
+            string nextLevel = "";
+            if (Int32.TryParse(currentLevelNumber, out currentLevelInt))
+            {
+                if (++currentLevelInt < 10)
+                    nextLevelNumber = "0" + currentLevelInt.ToString();
+                else
+                    nextLevelNumber = currentLevelInt.ToString();
+            }
+            else
+            {
+                System.Console.WriteLine("Sometihing went wrong, back to main menu");
+                Harness.GameCurrentLevel = new Level00();
+            }
+            nextLevel = "LogicGates.Models.Level" + nextLevelNumber;
+            System.Console.WriteLine(nextLevel);
+
+            Type type = Type.GetType(nextLevel, false);
+            if (type == null)
+                Harness.GameCurrentLevel = new Level99();
+            else
+            {
+                Harness.GameCurrentLevel = (Level)Activator.CreateInstance(type);
+                Harness.SaveGame();
+            }
+            Harness.RefreshOutput();
+        }
+
         public static void ResetGame()
         {
             Harness.GameCurrentLevel = new Level01();
@@ -101,7 +134,7 @@ namespace LogicGates.Engine
                     if ((pin.ParentConnection != null) && (pin.ParentConnection.State == Defs.Connection.HighImpedance) && !(pin.ParentConnection.isConnectedWithGateOutput()))
                     {
                         System.Console.WriteLine($"Pin A: {pin.ParentConnection.PinA.Element.ToString()} Pin B: {pin.ParentConnection.PinB.Element.ToString()}");
-                        pin.ParentConnection.State = (Defs.Connection)element.State;
+                        pin.ParentConnection.State = (Defs.Connection)element.CurrentTexture;
                         System.Console.WriteLine($"> Set connection state to: {pin.ParentConnection.State}");
                     }
                 }
@@ -128,10 +161,10 @@ namespace LogicGates.Engine
                 }
             }
 
-            foreach(var lamp in Harness.GameCurrentLevel.LampsList)
+            foreach (var lamp in Harness.GameCurrentLevel.LampsList)
             {
                 int potential = 0;
-                foreach(var pin in lamp.PinsList)
+                foreach (var pin in lamp.PinsList)
                 {
                     potential += (int)pin.ParentConnection.State;
                 }
@@ -141,7 +174,7 @@ namespace LogicGates.Engine
             }
 
             bool isFinished = false;
-            foreach(var lamp in Harness.GameCurrentLevel.LampsList)
+            foreach (var lamp in Harness.GameCurrentLevel.LampsList)
             {
                 if (lamp.CurrentTexture == 1)
                     isFinished = true;
@@ -149,12 +182,20 @@ namespace LogicGates.Engine
                     isFinished = false;
             }
 
-            if (isFinished)
-                System.Console.WriteLine("Level completed");
-            else
-                System.Console.WriteLine("Level not completed yet");
-
             System.Console.WriteLine("All pins are connected");
+
+            if (isFinished)
+            {
+                System.Console.WriteLine("Level completed");
+                Harness.GameCurrentLevel.AsstesList.Add(new Models.Images.Completed(new Size(Dimensions.Banner.Width, Dimensions.Banner.Height), new Position((Dimensions.Canvas.Width / 2) - (Dimensions.Banner.Width / 2), (Dimensions.Canvas.Height / 2) - (Dimensions.Banner.Height / 2))));
+                Harness.RefreshOutput();
+            }
+            else
+            {
+                System.Console.WriteLine("Level not completed yet");
+                Harness.GameCurrentLevel.AsstesList.Add(new Models.Images.Retry(new Size(Dimensions.Banner.Width, Dimensions.Banner.Height), new Position((Dimensions.Canvas.Width / 2) - (Dimensions.Banner.Width / 2), (Dimensions.Canvas.Height / 2) - (Dimensions.Banner.Height / 2))));
+                Harness.RefreshOutput();
+            }
         }
 
         static string Base64Encode(string plainText)
