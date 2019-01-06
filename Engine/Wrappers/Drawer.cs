@@ -3,6 +3,9 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
+    /// <summary>
+    /// Wrapper for drawing textures on Canvas
+    /// </summary>
     public static class Drawer
     {
         public static void RenderTexture(IntPtr texture, IntPtr renderer, int x, int y)

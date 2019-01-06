@@ -5,11 +5,12 @@ using System.Reflection;
 namespace LogicGates.Common
 {
     /// <summary>
-    /// Class used to resolve relative paths
+    /// Resolves relative paths to files
     /// </summary>
     public static class FilePath
     {
         static string _basePath = null;
+        /// <summary>Keeps absolute path to Resources folder</summary>
         static string BasePath
         {
             get
@@ -24,7 +25,7 @@ namespace LogicGates.Common
         }
 
         /// <summary>
-        /// Gets relative path to file
+        /// Gets relative path file
         /// </summary>
         /// <param name="fileName">File name</param>
         public static string Get(string fileName)
@@ -47,7 +48,5 @@ namespace LogicGates.Common
         {
             return Path.Combine(BasePath, fileName); ;
         }
-
     }
-
 }

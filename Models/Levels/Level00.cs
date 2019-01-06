@@ -6,6 +6,9 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models
 {
+    /// <summary>
+    /// Extends Level as Level00
+    /// </summary>
     public class Level00 : Level
     {
         public Level00()

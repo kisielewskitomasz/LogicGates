@@ -4,13 +4,19 @@ using LogicGates.Common;
 
 namespace LogicGates.Engine
 {
-
-
+    /// <summary>
+    /// Handles output to user
+    /// </summary>
     public class Output
     {
+        /// <summary>Keeps pointer to Window</summary>
         public static IntPtr Window { get; private set; } = IntPtr.Zero;
+        /// <summary>Keeps pointer to Renderer</summary>
         public static IntPtr Renderer { get; private set; } = IntPtr.Zero;
 
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
         public Output()
         {
 #if DEBUG
@@ -42,11 +48,17 @@ namespace LogicGates.Engine
 
         }
 
+        /// <summary>
+        /// Basic deconstructor
+        /// </summary>
         ~Output()
         {
             ReleaseAndQuit(Window, Renderer, IntPtr.Zero, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Helper which releases used resources
+        /// </summary>
         public static bool ReleaseAndQuit(IntPtr window, IntPtr renderer, IntPtr font, IntPtr image)
         {
             if (window != IntPtr.Zero)

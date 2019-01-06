@@ -6,10 +6,15 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Asset as Element object
+    /// </summary>
     public abstract class Element : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Element.Width, Dimensions.Element.Height);
+        /// <summary>Keeps Element pins</summary>
         public abstract List<Pin> PinsList { get; protected set; }
+
 
         public Element() : base()
         {
@@ -18,6 +23,7 @@ namespace LogicGates.Models.Elements
                 PinsList[i].Element = this;
             }
         }
+
 
         public Element(Size size) : base(size)
         {
@@ -43,6 +49,10 @@ namespace LogicGates.Models.Elements
             }
         }
 
+        /// <summary>
+        /// Check is Element in Tray
+        /// </summary>
+        /// <returns>True if Element is in Tray</returns>
         public bool IsInTray()
         {
             if (Position.Height > Dimensions.Tray.Height)

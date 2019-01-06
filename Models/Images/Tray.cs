@@ -2,6 +2,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Images
 {
+    /// <summary>
+    /// Extend basic Asset as Tray object
+    /// </summary>
     public class Tray : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Tray.Width, Dimensions.Tray.Height);

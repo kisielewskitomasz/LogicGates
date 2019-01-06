@@ -5,13 +5,25 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Defines Connection object
+    /// </summary>
     public class Connection
     {
+        /// <summary>Keeps Connection wires</summary>
         public List<Wire> WiresList = new List<Wire>();
+        /// <summary>Keeps first Pin of current connection</summary>
         public Pin PinA { get; set; } = null;
+        /// <summary>Keeps second Pin of current connection</summary>
         public Pin PinB { get; set; } = null;
+        /// <summary>Keeps current state of connection</summary>
         public Defs.Connection State { get; set; } = Defs.Connection.HighImpedance;
 
+        /// <summary>
+        /// Construct Connection with Pin A and Pin B
+        /// </summary>
+        /// <param name="a">First Pin of Connection</param>
+        /// <param name="b">Second Pin of Connection</param>
         public Connection(Pin a, Pin b)
         {
             PinA = a;
@@ -83,6 +95,10 @@ namespace LogicGates.Models.Elements
                 WiresList.Add(vWire);
         }
 
+        /// <summary>
+        /// Check is Connection connects something with Gate output Pin
+        /// </summary>
+        /// <returns>True if Connection connects something with Gate output Pin</returns>
         public bool isConnectedWithGateOutput()
         {
             if (((PinA.Element is Gate) && (PinA.Type == Defs.Pin.Out)) || ((PinB.Element is Gate) && (PinB.Type == Defs.Pin.Out)))

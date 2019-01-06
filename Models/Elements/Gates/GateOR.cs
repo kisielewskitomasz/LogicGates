@@ -3,6 +3,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Gate as GateOR object
+    /// </summary>
     public class GateOR : Gate
     {
         protected override string[] FileNames { get; set; } = { "gate_or.png" };

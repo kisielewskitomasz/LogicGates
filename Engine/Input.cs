@@ -8,17 +8,22 @@ using LogicGates.Common;
 
 namespace LogicGates.Engine
 {
+    /// <summary>
+    /// Handles input form user
+    /// </summary>
     public class Input
     {
         static bool _quit = false;
         static Defs.Mouse MouseState { get; set; } = 0;
-
         static Asset ClickedAsset { get; set; } = null;
         static Pin ClickedAssetPin { get; set; } = null;
         static Pin SelectedAssetPin { get; set; } = null;
         static Position MousePosition { get; set; } = new Position();
         static Position RelativeMousePosition { get; set; } = new Position();
 
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
         public Input()
         {
             SDL.SDL_Event e;
@@ -31,6 +36,10 @@ namespace LogicGates.Engine
                 }
             }
         }
+        /// <summary>
+        /// Handles input events
+        /// </summary>
+        /// <param name="e">Comming event sent by SDL Engine</param>
         static void HandleEvent(SDL.SDL_Event e)
         {
             switch (e.type)
@@ -46,6 +55,10 @@ namespace LogicGates.Engine
                     break;
             }
         }
+
+        /// <summary>
+        /// Handler for mouse buttons clicks
+        /// </summary>
         static void OnSDL_MOUSEBUTTONDOWN()
         {
             var clickedButton = SDL.SDL_GetMouseState(out MousePosition.Width, out MousePosition.Height);
@@ -108,6 +121,9 @@ namespace LogicGates.Engine
             }
         }
 
+        /// <summary>
+        /// Handler for mouse moving
+        /// </summary>
         static void OnSDL_MOUSEMOTION()
         {
             if (MouseState == Defs.Mouse.Move)
@@ -118,11 +134,18 @@ namespace LogicGates.Engine
             }
         }
 
+        /// <summary>
+        /// Handler for quit the game
+        /// </summary>
         static void OnSDL_QUIT()
         {
             Harness.QuitGame();
         }
 
+        /// <summary>
+        /// Helper which finds clicked Asset
+        /// </summary>
+        /// <param name="mousePosition">Mouse positon on click</param>
         static void FindClickedAsset(Position mousePosition)
         {
             var reversedAssetsList = new List<Asset>(Harness.GameCurrentLevel.AsstesList);
@@ -142,6 +165,11 @@ namespace LogicGates.Engine
             }
             ClickedAsset = null;
         }
+
+        /// <summary>
+        /// Helper which finds clicked Asset's Pin
+        /// </summary>
+        /// <param name="mousePosition">Mouse positon on click</param>
         static void FindClickedAssetPin(Position mousePosition)
         {
             foreach (var pin in ((Element)ClickedAsset).PinsList)
@@ -160,6 +188,9 @@ namespace LogicGates.Engine
             ClickedAssetPin = null;
         }
 
+        /// <summary>
+        /// Helper which terminates Input while loop
+        /// </summary>
         public static void Quit()
         {
             _quit = true;

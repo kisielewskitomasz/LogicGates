@@ -6,6 +6,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Images
 {
+    /// <summary>
+    /// Extend basic Asset as Finished object
+    /// </summary>
     public class Finished : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Banner.Width, Dimensions.Banner.Height);

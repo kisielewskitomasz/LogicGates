@@ -4,6 +4,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Engine
 {
+    /// <summary>
+    /// Wrapper for loading textures
+    /// </summary>
     public static class Loader
     {
         public static IntPtr LoadTextureFromBitmap(string fileName, IntPtr renderer)

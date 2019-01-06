@@ -8,6 +8,9 @@ using LogicGates.Models.Elements;
 
 namespace LogicGates.Engine
 {
+    /// <summary>
+    /// Handles whole logic of game and connects Input and Output together
+    /// </summary>
     public class Harness
     {
         public static Engine.Output EngineOutput { get; set; } = null;

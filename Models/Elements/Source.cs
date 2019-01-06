@@ -5,6 +5,9 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Element as Source object
+    /// </summary>
     public class Source : Element
     {
         public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(Dimensions.Element.Pin.Position.Out.Width, Dimensions.Element.Pin.Position.Out.Height, Defs.Pin.Out) };

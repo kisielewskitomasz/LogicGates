@@ -5,6 +5,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Images
 {
+    /// <summary>
+    /// Extend basic Asset as Simulate object
+    /// </summary>
     public class Simulate : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Element.Width, Dimensions.Element.Width);

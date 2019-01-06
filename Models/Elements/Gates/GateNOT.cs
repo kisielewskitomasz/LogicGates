@@ -4,6 +4,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Gate as GateNOT object
+    /// </summary>
     public class GateNOT : Gate
     {
         public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, Defs.Pin.In), new Pin(66, 33, Defs.Pin.Out) };

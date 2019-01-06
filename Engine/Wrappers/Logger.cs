@@ -3,6 +3,9 @@ using SDL2;
 
 namespace LogicGates.Engine
 {
+    /// <summary>
+    /// Wrapper for logging erroes
+    /// </summary>
     public static class Logger
     {
         /// <summary>

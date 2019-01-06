@@ -6,6 +6,9 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Element as Lamp object
+    /// </summary>
     public class Lamp : Element
     {
         protected override string[] FileNames { get; set; } = { "element_lamp_off.png", "element_lamp_on.png" };

@@ -4,11 +4,16 @@ using LogicGates.Engine;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Asset as Wire object
+    /// </summary>
     public class Wire : Asset
     {
+        /// <summary>Keeps Wire thickness</summary>
         public static int Thickness = Dimensions.Wire.Thickness;
         protected override string[] FileNames { get; set; } = { "element_wire_horizontal.png", "element_wire_vertical.png" };
         public override Size Size { get; protected set; }
+        /// <summary>Keeps Wire type</summary>
         public Defs.Wire Type { get; protected set; }
 
         protected Connection ParentLine = null;

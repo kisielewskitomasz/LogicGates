@@ -5,6 +5,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Images
 {
+    /// <summary>
+    /// Extend basic Asset as Background object
+    /// </summary>
     public class Background : Asset
     {
         public override Size Size { get; protected set; } = new Size(Dimensions.Canvas.Width, Dimensions.Canvas.Height);

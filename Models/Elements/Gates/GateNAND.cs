@@ -3,6 +3,9 @@ using LogicGates.Common;
 
 namespace LogicGates.Models.Elements
 {
+    /// <summary>
+    /// Extend basic Gate as GateNAND object
+    /// </summary>
     public class GateNAND : Gate
     {
         protected override string[] FileNames { get; set; } = { "gate_nand.png" };
