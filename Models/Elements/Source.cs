@@ -16,20 +16,17 @@ namespace LogicGates.Models.Elements
 
         public Source(Size size, Defs.Element signal) : base(size)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
+            CurrentTexture = (int)signal;
         }
 
         public Source(Position position, Defs.Element signal) : base(position)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
+            CurrentTexture = (int)signal;
         }
 
         public Source(Size size, Position position, Defs.Element signal) : base(size, position)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
+            CurrentTexture = (int)signal;
         }
     }
 }

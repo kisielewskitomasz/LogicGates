@@ -16,25 +16,17 @@ namespace LogicGates.Models.Elements
 
         public Lamp(Size size, Defs.Element signal) : base(size)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
+            CurrentTexture = (int)signal;
         }
 
         public Lamp(Position position, Defs.Element signal) : base(position)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
+            CurrentTexture = (int)signal;
         }
 
         public Lamp(Size size, Position position, Defs.Element signal) : base(size, position)
         {
-            State = (int)signal;
-            CurrentTexture = (int)State;
-        }
-
-        public override void ClickedRight(Position mousePosition, Position relativeMousePosition)
-        {
-            ChangeState();
+            CurrentTexture = (int)signal;
         }
     }
 }

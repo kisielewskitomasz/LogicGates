@@ -8,7 +8,6 @@ namespace LogicGates.Models.Elements
     {
         public override List<Pin> PinsList { get; protected set; } = new List<Pin> { new Pin(0, 33, Defs.Pin.In) };
         protected override string[] FileNames { get; set; } = { "element_ground.png" };
-        public override int State { get; protected set; } = (int)Defs.Element.Low;
 
         public Ground() : base()
         {
