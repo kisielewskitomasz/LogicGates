@@ -36,3 +36,6 @@ _GIMP/
 
 # Graphical resources used in project (only in develop phase)
 Resources/
+
+# Doxygen generated documentation
+Docs/
